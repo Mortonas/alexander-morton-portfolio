@@ -33,3 +33,12 @@
 - Phase mapping: Intake and structure = Briefing Officer; Model the party = Party Profiler; Ground the mechanics = Balance Analyst; Design the encounter = Lead Mechanist, Tactical Cartographer, Narrative Architect; Verify and summarize = Editor / Auditor, Tactical Summarist; Publish and export = Desktop Publisher, Cinematic Stylist.
 - Invariants: the ten stage labels and their order match the pinned source definition; the portfolio build has no sibling-checkout dependency; audit repair, persistence checkpoints, resumption, and stylist fallback are explanatory evidence rather than live orchestration tests; the service repository remains the behavior owner.
 - Compatibility/versioning: any upstream `PIPELINE_SEQUENCE` change requires reviewing the six-phase mapping and public wording, updating the portfolio tests, and advancing the recorded source commit before publication.
+
+## Character & Estate evidence presentation
+- Last updated: 2026-09-20
+- Responsibilities: present audited workbook architecture, formula distribution, input controls, calculation lineage, and reviewed automation behavior without publishing the private source artifacts.
+- Key files: `src/data/characterEstateEvidence.js`, `src/components/CharacterEstateEvidence.jsx`, `src/styles/character-estate.css`.
+- Authoritative inputs: the locally reviewed `Ultimate_Character_Sheet_Portfolio_Clean.xlsx` workbook and cleaned Apps Script ZIP, checked by an uncommitted release audit before presentation data changes.
+- Outputs: evidence-backed prose, one semantic system map, an accessible formula-distribution chart, and the two existing approved workbook WebP derivatives.
+- Invariants: public data contains no raw formulas, workbook values, comments, artwork, scripts, source hashes, audits, or evidence maps; the per-sheet formula counts reconcile to 974; the site publishes only `project-overview.webp` and `estate-overview.webp` as workbook-derived images; the site never executes the workbook or scripts.
+- Compatibility/versioning: a source-hash or audited-metric mismatch blocks publication. Presentation data and tests may change only after the private evidence review is repeated and approved.

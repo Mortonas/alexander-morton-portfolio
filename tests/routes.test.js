@@ -38,7 +38,9 @@ test('project registry describes each project by its actual type', async () => {
   await fs.access('public/images/encounter-factory/briefing-intake.png');
 
   const characterEstate = projects.find(({ slug }) => slug === 'character-estate-automation');
-  assert.equal(characterEstate.label, 'Spreadsheet automation project');
+  assert.equal(characterEstate.label, 'Spreadsheet systems case study');
+  assert.equal(characterEstate.linkLabel, 'View Character & Estate case study');
+  assert.match(characterEstate.summary, /private, evidence-reviewed spreadsheet system/i);
   assert.equal(projects[0].label, 'Data analysis project');
   assert.equal(projects[0].image, '/images/online-retail/monthly-revenue-chart.svg');
   await fs.access('public/images/online-retail/monthly-revenue-chart.svg');
