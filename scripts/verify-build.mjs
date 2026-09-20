@@ -43,7 +43,17 @@ for (const file of normalized) {
   if (lower.includes('release-audit') || lower.includes('evidence-map')) throw new Error(`internal evidence file reached build: ${file}`);
 }
 
-for (const image of ['dist/images/character-estate/project-overview.webp', 'dist/images/character-estate/estate-overview.webp']) {
+const approvedCharacterImages = [
+  'dist/images/character-estate/project-overview.webp',
+  'dist/images/character-estate/estate-overview.webp',
+  'dist/images/character-estate/front-sheet.webp',
+  'dist/images/character-estate/back-sheet.webp',
+];
+const builtCharacterImages = normalized.filter((file) => file.startsWith('dist/images/character-estate/')).sort();
+if (JSON.stringify(builtCharacterImages) !== JSON.stringify([...approvedCharacterImages].sort())) {
+  throw new Error(`unapproved character workbook image set: ${builtCharacterImages.join(', ')}`);
+}
+for (const image of approvedCharacterImages) {
   const bytes = await fs.readFile(image);
   if (bytes.includes(Buffer.from('EXIF')) || bytes.includes(Buffer.from('XMP '))) throw new Error(`metadata chunk found in ${image}`);
 }

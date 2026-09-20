@@ -84,6 +84,29 @@ export default function CharacterEstatePage() {
           </ul>
         </section>
 
+        <section className="section workbook-views" aria-labelledby="workbook-views-title">
+          <div className="section-heading">
+            <p className="eyebrow">Workbook views</p>
+            <h2 id="workbook-views-title">The two main pages connect current state with long-term history</h2>
+            <p>The Front sheet brings character information, calculated attributes, skills, resources, and equipment into one working view. The Back sheet records key events, balances, passive totals, and year-by-year history.</p>
+          </div>
+          <div className="workbook-view-grid">
+            <figure className="workbook-view-card">
+              <a className="workbook-view-image" href="/images/character-estate/front-sheet.webp" target="_blank" rel="noreferrer" aria-label="Open the full-size Front worksheet render">
+                <img src="/images/character-estate/front-sheet.webp" alt="Front worksheet showing character details, calculated characteristics, skills, resources, and equipment" loading="lazy" />
+              </a>
+              <figcaption><h3>Front</h3><p>The primary working page combines controlled inputs with formula-driven values and linked equipment records.</p><a className="text-link" href="/images/character-estate/front-sheet.webp" target="_blank" rel="noreferrer">Open full-size Front worksheet</a></figcaption>
+            </figure>
+            <figure className="workbook-view-card">
+              <a className="workbook-view-image" href="/images/character-estate/back-sheet.webp" target="_blank" rel="noreferrer" aria-label="Open the full-size Back worksheet render">
+                <img src="/images/character-estate/back-sheet.webp" alt="Back worksheet showing key events, home equipment, passive totals, annual history, and glory awards" loading="lazy" />
+              </a>
+              <figcaption><h3>Back</h3><p>The history page keeps annual changes and cumulative totals visible alongside the current period.</p><a className="text-link" href="/images/character-estate/back-sheet.webp" target="_blank" rel="noreferrer">Open full-size Back worksheet</a></figcaption>
+            </figure>
+          </div>
+          <p className="workbook-view-note"><strong>Publication note:</strong> These are flattened, metadata-free renders of approved worksheet ranges. Comments and embedded artwork are omitted, and the private workbook is not downloadable.</p>
+        </section>
+
         <CharacterEstateEvidence />
 
         <section className="section split lineage-section" aria-labelledby="lineage-title">

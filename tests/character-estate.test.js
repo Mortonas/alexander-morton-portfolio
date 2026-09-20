@@ -96,14 +96,29 @@ test('system diagram and formula chart expose semantics without changing sequenc
   assert.doesNotMatch(styles, /row-reverse|column-reverse/);
 });
 
-test('only the two approved workbook derivatives are referenced and public', async () => {
+test('only the four approved workbook derivatives are referenced and public', async () => {
   const page = await fs.readFile('src/pages/CharacterEstatePage.jsx', 'utf8');
   const evidence = await fs.readFile('src/components/CharacterEstateEvidence.jsx', 'utf8');
   const references = [...`${page}\n${evidence}`.matchAll(/\/images\/character-estate\/[^"']+/g)].map(([match]) => match).sort();
   assert.deepEqual(references, [
+    '/images/character-estate/back-sheet.webp',
+    '/images/character-estate/back-sheet.webp',
+    '/images/character-estate/back-sheet.webp',
     '/images/character-estate/estate-overview.webp',
+    '/images/character-estate/front-sheet.webp',
+    '/images/character-estate/front-sheet.webp',
+    '/images/character-estate/front-sheet.webp',
     '/images/character-estate/project-overview.webp',
   ]);
   const files = await fs.readdir('public/images/character-estate');
-  assert.deepEqual(files.sort(), ['estate-overview.webp', 'project-overview.webp']);
+  assert.deepEqual(files.sort(), ['back-sheet.webp', 'estate-overview.webp', 'front-sheet.webp', 'project-overview.webp']);
+});
+
+test('main worksheet gallery publishes descriptive, sanitized static evidence', async () => {
+  const page = await fs.readFile('src/pages/CharacterEstatePage.jsx', 'utf8');
+  assert.match(page, /The two main pages connect current state with long-term history/);
+  assert.match(page, /Open full-size Front worksheet/);
+  assert.match(page, /Open full-size Back worksheet/);
+  assert.match(page, /Comments and embedded artwork are omitted/);
+  assert.match(page, /private workbook is not downloadable/);
 });

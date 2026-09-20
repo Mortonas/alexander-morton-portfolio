@@ -22,7 +22,7 @@
 - Responsibilities: present project claims without publishing restricted services or private workbook sources.
 - Inputs: public project repositories plus locally reviewed workbook and Apps Script evidence.
 - Outputs: approved screenshots, evidence-backed prose, repository links, and one sanitized fictional Encounter Factory HTML export.
-- Invariants: the Encounter Factory service is never hosted here; its approved export is static, sandboxed in the page, stripped of external requests, and checked for scripts, forms, contact details, and credential-like text. Character workbook, ZIP, scripts, audit data, comments, embedded art, and calculation files never enter Git or `dist`; only two approved metadata-free workbook WebP derivatives may be published.
+- Invariants: the Encounter Factory service is never hosted here; its approved export is static, sandboxed in the page, stripped of external requests, and checked for scripts, forms, contact details, and credential-like text. Character workbook, ZIP, scripts, audit data, comments, embedded art, and calculation files never enter Git or `dist`; only four approved metadata-free workbook WebP derivatives may be published.
 
 ## Encounter Factory workflow case-study mapping
 - Last updated: 2026-09-20
@@ -39,6 +39,6 @@
 - Responsibilities: present audited workbook architecture, formula distribution, input controls, calculation lineage, and reviewed automation behavior without publishing the private source artifacts.
 - Key files: `src/data/characterEstateEvidence.js`, `src/components/CharacterEstateEvidence.jsx`, `src/styles/character-estate.css`.
 - Authoritative inputs: the locally reviewed `Ultimate_Character_Sheet_Portfolio_Clean.xlsx` workbook and cleaned Apps Script ZIP, checked by an uncommitted release audit before presentation data changes.
-- Outputs: evidence-backed prose, one semantic system map, an accessible formula-distribution chart, and the two existing approved workbook WebP derivatives.
-- Invariants: public data contains no raw formulas, workbook values, comments, artwork, scripts, source hashes, audits, or evidence maps; the per-sheet formula counts reconcile to 974; the site publishes only `project-overview.webp` and `estate-overview.webp` as workbook-derived images; the site never executes the workbook or scripts.
+- Outputs: evidence-backed prose, one semantic system map, an accessible formula-distribution chart, and four approved workbook WebP derivatives.
+- Invariants: public data contains no raw formulas, comments, artwork, scripts, source hashes, audits, or evidence maps; the per-sheet formula counts reconcile to 974; the site publishes only `project-overview.webp`, `estate-overview.webp`, `front-sheet.webp`, and `back-sheet.webp` as workbook-derived images; the two full-sheet renders may contain reviewed labels and cached fictional example values but omit comments and embedded images; the site never executes the workbook or scripts.
 - Compatibility/versioning: a source-hash or audited-metric mismatch blocks publication. Presentation data and tests may change only after the private evidence review is repeated and approved.
