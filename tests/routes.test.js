@@ -29,6 +29,18 @@ test('project registry provides stable clean routes', () => {
   ]);
 });
 
+test('project registry describes each project by its actual type', async () => {
+  const encounter = projects.find(({ slug }) => slug === 'encounter-factory');
+  assert.equal(encounter.label, 'Application in progress');
+  assert.match(encounter.summary, /unfinished D&D tool/i);
+  assert.equal(encounter.image, '/images/encounter-factory/briefing-intake.png');
+  await fs.access('public/images/encounter-factory/briefing-intake.png');
+
+  const characterEstate = projects.find(({ slug }) => slug === 'character-estate-automation');
+  assert.equal(characterEstate.label, 'Spreadsheet automation project');
+  assert.equal(projects[0].label, 'Data analysis project');
+});
+
 test('Netlify config has no global home-page fallback', async () => {
   const config = await fs.readFile('netlify.toml', 'utf8');
   assert.doesNotMatch(config, /from\s*=\s*"\/\*"[\s\S]*to\s*=\s*"\/index\.html"/);

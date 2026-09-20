@@ -4,9 +4,9 @@ Multi-project portfolio for Alexander Morton, Entry-Level Data Analyst.
 
 ## Project pages
 
-- `/projects/online-retail/` — reproducible Python, SQL, SQLite, Excel, and React case study.
-- `/projects/encounter-factory/` — local application architecture and workflow case study.
-- `/projects/character-estate-automation/` — evidence-reviewed spreadsheet automation case study.
+- `/projects/online-retail/` — reproducible Python, SQL, SQLite, Excel, and React analysis project.
+- `/projects/encounter-factory/` — unfinished D&D encounter-building application with structured intake, deterministic math, and validated AI-assisted writing.
+- `/projects/character-estate-automation/` — evidence-reviewed spreadsheet automation project.
 
 Each route is a physical HTML entry. Vite development routing is not treated as release evidence; production preview and deployed Netlify requests verify page-specific documents and metadata.
 

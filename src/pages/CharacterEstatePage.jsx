@@ -8,7 +8,7 @@ export default function CharacterEstatePage() {
     <SiteLayout>
       <main id="main">
         <ProjectHero
-          eyebrow="Spreadsheet automation case study"
+          eyebrow="Spreadsheet automation project"
           title="Character & Estate Automation"
           subtitle="Google Sheets management system"
           lede="A linked workbook that organizes character, estate, landholding, follower, history, and resource information through formulas, validation, reference data, and two reviewed Apps Script workflows."

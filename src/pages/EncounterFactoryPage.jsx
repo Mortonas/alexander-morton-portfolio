@@ -1,4 +1,4 @@
-import { CheckCircle2, Database, GitBranch, ShieldCheck } from 'lucide-react';
+import { Bot, Calculator, CheckCircle2, FileText, ListChecks } from 'lucide-react';
 import ProjectHero from '../components/ProjectHero.jsx';
 import SiteLayout from '../components/SiteLayout.jsx';
 
@@ -7,47 +7,76 @@ export default function EncounterFactoryPage() {
     <SiteLayout>
       <main id="main">
         <ProjectHero
-          eyebrow="Application case study"
+          eyebrow="Application in progress"
           title="Encounter Factory"
-          subtitle="Structured Encounter Builder"
-          lede="A local application that turns a game master's briefing into structured inputs, deterministic calculations, validated workflow state, and reviewable exports."
+          subtitle="From a D&D party briefing to a usable encounter document"
+          lede="Encounter Factory is an unfinished system I am building for Dungeon Masters—the people who run Dungeons & Dragons games. They describe their party, setting, objective, and preferences; the application checks the encounter math and uses AI to help write an interesting, structured encounter document."
           repositoryUrl="https://github.com/Mortonas/Encounter-Factory"
-          meta={['React + TypeScript', 'Express', 'Zod validation', 'Local evaluation release']}
+          meta={['React + TypeScript', 'Express', 'Deterministic MathEngine', 'AI-assisted generation', 'Work in progress']}
         />
 
-        <section className="section metric-strip" aria-label="Project highlights">
-          <article><strong>2</strong><span>guided workflows</span></article>
-          <article><strong>Typed</strong><span>schemas at system boundaries</span></article>
-          <article><strong>Persistent</strong><span>job and recovery state</span></article>
+        <section className="section media-section lead-media" aria-labelledby="briefing-title">
+          <div className="section-heading">
+            <p className="eyebrow">The starting point</p>
+            <h2 id="briefing-title">The game master fills in one detailed briefing</h2>
+            <p>The form captures the player characters, requested enemies and allies, the location, the win condition, the desired tone, and the story details that should shape the encounter. This example uses fictional mock data.</p>
+          </div>
+          <figure className="screenshot-frame">
+            <img src="/images/encounter-factory/briefing-intake.png" alt="Encounter Factory briefing form filled with fictional information for a Dungeons and Dragons party, enemy, ally, setting, and narrative goals" />
+            <figcaption>A filled fictional briefing shows the information used to calculate and write the encounter.</figcaption>
+          </figure>
         </section>
 
-        <section className="section split narrative-section">
+        <section className="section metric-strip" aria-label="Project status and design highlights">
+          <article><strong>In progress</strong><span>unfinished local application</span></article>
+          <article><strong>1 briefing</strong><span>party, scenario, and story inputs</span></article>
+          <article><strong>Math + AI</strong><span>separate responsibilities</span></article>
+          <article><strong>Document</strong><span>reviewable encounter output</span></article>
+        </section>
+
+        <section className="section split narrative-section" aria-labelledby="encounter-flow-title">
           <div>
-            <p className="eyebrow">Problem</p>
-            <h2>Turn an open-ended briefing into a traceable workflow</h2>
-            <p>A briefing begins as qualitative information. The application normalizes it into structured fields, calculates measurable targets, validates generated material, and keeps intermediate state available for review and recovery.</p>
+            <p className="eyebrow">What I am building</p>
+            <h2 id="encounter-flow-title">AI handles the creative work, not the trusted numbers</h2>
+            <p>The application is designed to keep two responsibilities separate. Code calculates measurable targets such as encounter pressure, durability, damage, pacing, and action balance. AI works inside those boundaries to propose the situation, tactics, complications, and presentation.</p>
+            <p>That separation is important: generated writing can make the encounter more imaginative, but it cannot silently change the mechanical targets owned by the MathEngine.</p>
           </div>
           <ol className="process-list">
-            <li><Database aria-hidden="true" /><div><strong>Structure the request</strong><span>Typed setup data creates a consistent starting point.</span></div></li>
-            <li><GitBranch aria-hidden="true" /><div><strong>Calculate targets</strong><span>A deterministic MathEngine owns mechanical results.</span></div></li>
-            <li><ShieldCheck aria-hidden="true" /><div><strong>Validate boundaries</strong><span>Schemas reject malformed output before it enters the workflow.</span></div></li>
-            <li><CheckCircle2 aria-hidden="true" /><div><strong>Preserve evidence</strong><span>Jobs, progress, and exports retain reviewable state.</span></div></li>
+            <li><ListChecks aria-hidden="true" /><div><strong>Collect the briefing</strong><span>The game master describes the party, mission, opposition, tone, and constraints.</span></div></li>
+            <li><Calculator aria-hidden="true" /><div><strong>Calculate the pressure</strong><span>Deterministic code establishes encounter targets from the submitted party information.</span></div></li>
+            <li><Bot aria-hidden="true" /><div><strong>Generate within boundaries</strong><span>AI turns the checked inputs into creative encounter material without owning the core math.</span></div></li>
+            <li><CheckCircle2 aria-hidden="true" /><div><strong>Validate and recover</strong><span>Typed schemas, retries, checkpoints, and visible job state make failures reviewable.</span></div></li>
+            <li><FileText aria-hidden="true" /><div><strong>Review the document</strong><span>The result is packaged for the game master to inspect and export before using it at the table.</span></div></li>
           </ol>
         </section>
 
-        <section className="section media-section" aria-labelledby="encounter-builder-title">
-          <div className="section-heading"><p className="eyebrow">Encounter Builder</p><h2 id="encounter-builder-title">Full structured generation workflow</h2><p>The main workflow exposes the briefing, calculated targets, job progress, and export path as separate steps.</p></div>
-          <figure className="screenshot-frame"><img src="/images/encounter-factory/encounter-builder.png" alt="Encounter Builder interface showing a structured encounter form" /><figcaption>Encounter Builder provides the full creation and export path.</figcaption></figure>
+        <section className="section media-section alt" aria-labelledby="operator-title">
+          <div className="section-heading">
+            <p className="eyebrow">Behind the form</p>
+            <h2 id="operator-title">Submissions enter a reviewable local queue</h2>
+            <p>A public briefing does not immediately start AI generation. It creates a queued session that a local operator can inspect and claim, keeping intake separate from execution.</p>
+          </div>
+          <figure className="screenshot-frame">
+            <img src="/images/encounter-factory/encounter-builder.png" alt="Encounter Factory local operator console showing the incoming briefing queue" loading="lazy" />
+            <figcaption>The local operator view keeps submitted briefings, generation jobs, and recovery state visible.</figcaption>
+          </figure>
         </section>
 
-        <section className="section media-section alt" aria-labelledby="advisor-title">
-          <div className="section-heading"><p className="eyebrow">GM Advisor</p><h2 id="advisor-title">A shorter diagnostic path</h2><p>The second workflow gives a faster review while retaining the same calculation and validation boundaries.</p></div>
-          <figure className="screenshot-frame"><img src="/images/encounter-factory/gm-advisor.png" alt="GM Advisor interface showing a diagnostic review form" /><figcaption>GM Advisor focuses on review before play.</figcaption></figure>
+        <section className="section media-section" aria-labelledby="advisor-title">
+          <div className="section-heading">
+            <p className="eyebrow">Second workflow</p>
+            <h2 id="advisor-title">GM Advisor offers a faster tactical review</h2>
+            <p>The companion workflow reviews the same structured party information and returns concise preparation notes when a full encounter document is not needed.</p>
+          </div>
+          <figure className="screenshot-frame">
+            <img src="/images/encounter-factory/gm-advisor.png" alt="GM Advisor interface showing a tactical review generated from fictional party information" loading="lazy" />
+            <figcaption>GM Advisor is a shorter review path built on the same calculation and validation boundaries.</figcaption>
+          </figure>
         </section>
 
         <section className="section limitation" aria-labelledby="encounter-limit-title">
-          <div><p className="eyebrow">Release boundary</p><h2 id="encounter-limit-title">A case study, not a public service</h2></div>
-          <p>The public repository is a local, source-visible evaluation release. This portfolio does not run the server, collect submissions, call an AI provider, or imply approval for public-network deployment.</p>
+          <div><p className="eyebrow">Current status</p><h2 id="encounter-limit-title">Useful work in progress, not a finished product</h2></div>
+          <p>Encounter Factory is still being developed and evaluated locally. The repository demonstrates the current interface, data flow, MathEngine, validation, background jobs, recovery, and exports. This portfolio does not run the server, accept real submissions, or present the system as ready for public hosting.</p>
         </section>
       </main>
     </SiteLayout>

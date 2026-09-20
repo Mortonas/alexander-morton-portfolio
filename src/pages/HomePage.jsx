@@ -21,8 +21,8 @@ export default function HomePage() {
         <section id="work" className="section work-section" aria-labelledby="work-title">
           <div className="section-heading">
             <p className="eyebrow">Selected work</p>
-            <h2 id="work-title">Three projects, three kinds of evidence</h2>
-            <p>The retail case study shows end-to-end analysis. The other projects show how I structure inputs, calculations, validation, and repeatable workflows.</p>
+            <h2 id="work-title">Different projects, one careful way of working</h2>
+            <p>Online Retail is a complete data analysis. Encounter Factory is an application I am still building. Character &amp; Estate Automation shows how I organize and automate a complex spreadsheet workflow.</p>
           </div>
           <div className="project-list">
             {projects.map((project, index) => <ProjectCard key={project.slug} project={project} featured={index === 0} />)}
