@@ -60,3 +60,11 @@ test('dashboard errors cannot mount dashboard content', async () => {
   assert.match(page, /role="alert"/);
   assert.match(page, /Try again/);
 });
+
+test('Encounter Factory ends with a clearly qualified fictional output example', async () => {
+  const page = await fs.readFile('src/pages/EncounterFactoryPage.jsx', 'utf8');
+  assert.match(page, /Example output · work in progress/);
+  assert.match(page, /The Bell Beneath Ashfall/);
+  assert.match(page, /No client submission or private campaign content/);
+  assert.match(page, /examples\/fictional-encounter\/encounter\.md/);
+});

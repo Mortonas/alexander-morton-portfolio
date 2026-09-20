@@ -1,6 +1,7 @@
-import { Bot, Calculator, CheckCircle2, FileText, ListChecks } from 'lucide-react';
+import { Bot, Calculator, CheckCircle2, ExternalLink, FileText, ListChecks } from 'lucide-react';
 import ProjectHero from '../components/ProjectHero.jsx';
 import SiteLayout from '../components/SiteLayout.jsx';
+import '../styles/encounter-document.css';
 
 export default function EncounterFactoryPage() {
   return (
@@ -77,6 +78,53 @@ export default function EncounterFactoryPage() {
         <section className="section limitation" aria-labelledby="encounter-limit-title">
           <div><p className="eyebrow">Current status</p><h2 id="encounter-limit-title">Useful work in progress, not a finished product</h2></div>
           <p>Encounter Factory is still being developed and evaluated locally. The repository demonstrates the current interface, data flow, MathEngine, validation, background jobs, recovery, and exports. This portfolio does not run the server, accept real submissions, or present the system as ready for public hosting.</p>
+        </section>
+
+        <section className="section example-output-section" aria-labelledby="example-output-title">
+          <div className="section-heading">
+            <p className="eyebrow">Example output · work in progress</p>
+            <h2 id="example-output-title">What an encounter document can look like</h2>
+            <p>This existing fictional example is included with the Encounter Factory repository. It demonstrates the intended human-readable result, but the application and document structure are still being developed.</p>
+          </div>
+
+          <article className="encounter-document" aria-label="Example work-in-progress encounter document">
+            <header>
+              <div>
+                <span>Encounter Factory · Fictional example</span>
+                <h3>The Bell Beneath Ashfall</h3>
+              </div>
+              <strong>Work in progress</strong>
+            </header>
+
+            <p className="document-intro">The party enters a leaning bell chamber while a survey crew shelters behind a cracked stone screen. Every heavy impact shakes more ash through the rafters.</p>
+
+            <div className="document-grid">
+              <section aria-labelledby="example-objective-title">
+                <h4 id="example-objective-title">Objective</h4>
+                <p>Release two jammed counterweights and lead the crew through the western arch before the fourth structural shift.</p>
+              </section>
+
+              <section aria-labelledby="example-pressure-title">
+                <h4 id="example-pressure-title">Tactical pressure</h4>
+                <ul>
+                  <li>Ashbound sentinels guard separate counterweights and try to divide rescuers from defenders.</li>
+                  <li>A character can spend an action to clear, brace, or release a mechanism instead of attacking.</li>
+                  <li>At the end of each round, mark one structural shift. A braced support cancels the next shift.</li>
+                  <li>The sentinels withdraw when both counterweights are released; defeating them is optional.</li>
+                </ul>
+              </section>
+
+              <section aria-labelledby="example-outcomes-title">
+                <h4 id="example-outcomes-title">Possible outcomes</h4>
+                <p>Fast coordination rescues everyone and preserves the tower’s survey records. A slower victory can still save the crew while losing equipment or access to the lower archive. Retreat leaves the site unstable but does not dictate what the group does next.</p>
+              </section>
+            </div>
+
+            <footer>
+              <p>Original fictional evaluation material. No client submission or private campaign content.</p>
+              <a className="text-link" href="https://github.com/Mortonas/Encounter-Factory/blob/main/examples/fictional-encounter/encounter.md" target="_blank" rel="noreferrer">View the source example <ExternalLink size={15} aria-hidden="true" /></a>
+            </footer>
+          </article>
         </section>
       </main>
     </SiteLayout>
