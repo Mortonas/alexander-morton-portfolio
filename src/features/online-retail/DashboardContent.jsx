@@ -1,5 +1,7 @@
 import { lazy, Suspense } from 'react';
 import EvidenceLinks from './EvidenceLinks.jsx';
+import { selectFindings } from './dashboardFindings.js';
+import './online-retail.css';
 
 const DashboardCharts = lazy(() => import('./DashboardCharts.jsx'));
 const money = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', maximumFractionDigits: 0 });
@@ -14,21 +16,25 @@ function Metric({ label, value, definition }) {
 }
 
 export default function DashboardContent({ data }) {
-  const peak = data.monthly.reduce((best, row) => row.net_revenue_pence > best.net_revenue_pence ? row : best, data.monthly[0]);
-  const uk = data.countries.find((item) => item.country === 'United Kingdom');
-  const topProduct = data.products[0];
+  const findings = selectFindings(data);
   const quality = data.quality;
 
   return (
     <>
       <section className="section dark-section" aria-labelledby="retail-summary-title">
-        <div className="section-heading"><p className="eyebrow">Executive summary</p><h2 id="retail-summary-title">Revenue remained highly concentrated</h2></div>
+        <div className="section-heading"><p className="eyebrow">Executive summary</p><h2 id="retail-summary-title">Concentration, repeat purchasing, and reporting sensitivity</h2></div>
         <div className="insight-grid">
-          <article><strong>{peak.month}</strong><span>Highest monthly net revenue at {pounds(peak.net_revenue_pence)}</span></article>
-          <article><strong>{percent(Math.round(uk.net_revenue_pence * 10000 / data.kpis.net_revenue_pence))}</strong><span>United Kingdom share of net revenue</span></article>
-          <article><strong>{topProduct.stock_code}</strong><span>Highest net-revenue product at {pounds(topProduct.net_revenue_pence)}</span></article>
+          <article><strong>November 2011</strong><span>Highest complete month at {pounds(findings.highestCompleteMonth.net_revenue_pence)}</span></article>
+          <article><strong>{(findings.ukShareTenthsPercent / 10).toFixed(1)}%</strong><span>United Kingdom share of net revenue</span></article>
+          <article><strong>{(findings.sixPlusCustomerShareTenthsPercent / 10).toFixed(1)}% → {(findings.sixPlusNetShareTenthsPercent / 10).toFixed(1)}%</strong><span>Customers in the 6+ order group and their share of identified-customer net revenue</span></article>
+          <article><strong>{exactPounds(findings.sensitivityDeltaPence)}</strong><span>Net-revenue change when anomaly-flagged lines are excluded ({(findings.sensitivityDeltaBps / 100).toFixed(2)}%)</span></article>
         </div>
-        <p><strong>Recommendation:</strong> protect availability for the leading products and monitor cancellation value alongside gross sales. Treat international growth as diversification, not a replacement for the core UK market.</p>
+        <div className="recommendations"><h3>Evidence-bounded next steps</h3><ul>
+          <li>Investigate repeat behavior among high-frequency customers.</li>
+          <li>Compare country-level order, cancellation, and customer-mix patterns before recommending international expansion.</li>
+          <li>Review extreme-value transactions and monitor cancellation value alongside gross sales.</li>
+          <li>Treat merchandise rankings as follow-up priorities; inventory, margin, and cost decisions require data not present in this source.</li>
+        </ul></div>
       </section>
 
       <section className="section split narrative-section" aria-labelledby="retail-method-title">

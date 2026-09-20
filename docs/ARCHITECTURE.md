@@ -10,12 +10,12 @@
 
 ## Online Retail boundary
 - Last updated: 2026-09-20
-- Responsibilities: retain the existing version-1 dashboard contract and analytical calculations inside the portfolio shell.
-- Key files: `src/features/online-retail/loadDashboard.js`, `DashboardContent.jsx`, `DashboardCharts.jsx`.
-- Inputs: root-absolute `/data/dashboard-v1.json`.
+- Responsibilities: verify and present source-generated version-1 artifacts without reimplementing analytical calculations.
+- Key files: `src/features/online-retail/loadDashboard.js`, `dashboardFindings.js`, `DashboardContent.jsx`, `DashboardCharts.jsx`.
+- Inputs: root-absolute JSON, checksum, schema, and workbook URLs.
 - Outputs: KPIs, four charts, accessible summaries, and root-absolute evidence links.
-- Invariants: invalid or incompatible data renders no findings or charts; Chart.js loads only after validation; the source repository remains the pipeline owner.
-- Compatibility/versioning: contract major version 1 only.
+- Invariants: exact JSON bytes pass SHA-256 before decoding; unsupported majors fail before schema validation; Draft 2020-12 validation, canonical ordering, and reconciliation pass before analytical UI mounts; Ajv and Chart.js stay outside the home route; the source repository remains the schema, pipeline, and artifact owner.
+- Compatibility/versioning: valid 1.0 and 1.1 documents are accepted; unsupported major versions fail clearly. Schema and artifact mirrors must be byte-identical to the source release.
 
 ## Project evidence boundary
 - Last updated: 2026-09-20

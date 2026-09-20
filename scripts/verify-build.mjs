@@ -2,8 +2,8 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { gzipSync } from 'node:zlib';
 
-const origin = process.env.VITE_SITE_ORIGIN;
-if (!origin) throw new Error('VITE_SITE_ORIGIN is required.');
+const origin = (process.env.VITE_SITE_ORIGIN || process.env.URL || '').replace(/\/$/, '');
+if (!origin) throw new Error('VITE_SITE_ORIGIN is required locally; Netlify supplies URL automatically.');
 
 const routes = [
   ['index.html', 'Alexander Morton | Entry-Level Data Analyst', `${origin}/`, 'home'],
@@ -14,6 +14,7 @@ const routes = [
 
 for (const [relative, title, canonical, page] of routes) {
   const html = await fs.readFile(path.join('dist', relative), 'utf8');
+  if (html.includes('%VITE_SITE_ORIGIN%')) throw new Error(`${relative} contains an unresolved production-origin placeholder`);
   if (!html.includes(`<title>${title}</title>`)) throw new Error(`${relative} has the wrong title`);
   if (!html.includes(`rel="canonical" href="${canonical}"`)) throw new Error(`${relative} has the wrong canonical URL`);
   if (!html.includes(`property="og:url" content="${canonical}"`)) throw new Error(`${relative} has the wrong Open Graph URL`);
@@ -40,7 +41,7 @@ for (const file of normalized) {
   if (lower.includes('ultimate_character')) throw new Error(`private source name reached build: ${file}`);
   if (/\.(zip|gs|xlsm)$/.test(lower)) throw new Error(`private source type reached build: ${file}`);
   if (lower.endsWith('.xlsx') && file !== allowedWorkbook) throw new Error(`unapproved workbook reached build: ${file}`);
-  if (lower.includes('release-audit') || lower.includes('evidence-map')) throw new Error(`internal evidence file reached build: ${file}`);
+  if (lower.includes('release-audit') || lower.includes('evidence-map') || lower.includes('release-verification')) throw new Error(`internal evidence file reached build: ${file}`);
 }
 
 const approvedCharacterImages = [
@@ -95,7 +96,23 @@ if (actualGzipBytes >= 175 * 1024) throw new Error(`home JavaScript is ${actualG
 const homeFiles = [...selected].map((key) => manifest[key].file).filter(Boolean);
 for (const file of homeFiles) {
   const contents = await fs.readFile(path.join('dist', file), 'utf8');
-  if (contents.includes('chart.js/auto') || contents.includes('CategoryScale')) throw new Error('Chart.js entered the home bundle');
+  if (contents.includes('chart.js/auto') || contents.includes('CategoryScale') || contents.includes('Ajv2020') || contents.includes('json-schema.org/draft/2020-12')) throw new Error('Online Retail validation or chart code entered the home bundle');
 }
 
-console.log(JSON.stringify({ routes: routes.length, files: files.length, homeGzipBytes: actualGzipBytes, encounterExportVerified: true }, null, 2));
+const retailSelected = new Set();
+function addRetailChunk(key) {
+  if (!key || retailSelected.has(key)) return;
+  const chunk = manifest[key];
+  if (!chunk) return;
+  retailSelected.add(key);
+  for (const imported of chunk.imports || []) addRetailChunk(imported);
+  for (const imported of chunk.dynamicImports || []) addRetailChunk(imported);
+}
+addRetailChunk(Object.keys(manifest).find((key) => manifest[key].name === 'OnlineRetailPage'));
+let retailGzipBytes = 0;
+for (const key of retailSelected) {
+  const file = manifest[key]?.file;
+  if (file?.endsWith('.js')) retailGzipBytes += gzipSync(await fs.readFile(path.join('dist', file))).length;
+}
+
+console.log(JSON.stringify({ routes: routes.length, files: files.length, homeGzipBytes: actualGzipBytes, onlineRetailGzipBytes: retailGzipBytes, encounterExportVerified: true }, null, 2));

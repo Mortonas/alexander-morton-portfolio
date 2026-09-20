@@ -1,8 +1,8 @@
 import { spawn } from 'node:child_process';
 import path from 'node:path';
 
-const origin = process.env.VITE_SITE_ORIGIN;
-if (!origin) throw new Error('VITE_SITE_ORIGIN is required.');
+const origin = (process.env.VITE_SITE_ORIGIN || process.env.URL || '').replace(/\/$/, '');
+if (!origin) throw new Error('VITE_SITE_ORIGIN is required locally; Netlify supplies URL automatically.');
 const port = 4174;
 const base = `http://127.0.0.1:${port}`;
 const viteBin = path.resolve('node_modules/vite/bin/vite.js');
@@ -34,12 +34,12 @@ try {
     const html = await response.text();
     if (!response.ok || !html.includes(`<title>${title}</title>`) || !html.includes(`href="${canonical}"`)) throw new Error(`direct request failed for ${route}`);
   }
-  for (const asset of ['/data/dashboard-v1.json', '/data/dashboard-v1.sha256', '/artifacts/online-retail-case-study.xlsx']) {
+  for (const asset of ['/data/dashboard-v1.json', '/data/dashboard-v1.sha256', '/data/dashboard-v1.schema.json', '/artifacts/online-retail-case-study.xlsx']) {
     const response = await fetch(`${base}${asset}`);
     const bytes = await response.arrayBuffer();
     if (!response.ok || bytes.byteLength === 0) throw new Error(`asset request failed for ${asset}`);
   }
-  console.log(`verified ${routes.length} canonical documents and 3 root-absolute evidence assets`);
+  console.log(`verified ${routes.length} canonical documents and 4 root-absolute evidence assets`);
 } finally {
   child.kill();
 }

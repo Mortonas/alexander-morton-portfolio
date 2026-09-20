@@ -14,18 +14,23 @@ Each route is a physical HTML entry. Vite development routing is not treated as 
 
 ```text
 npm ci
-npm test
-npm run lint
-VITE_SITE_ORIGIN=https://example.test npm run build
-VITE_SITE_ORIGIN=https://example.test npm run verify:build
+VITE_SITE_ORIGIN=https://example.test npm run release:build
 VITE_SITE_ORIGIN=https://example.test npm run verify:preview
 ```
 
-PowerShell users can set `$env:VITE_SITE_ORIGIN = "https://example.test"` before the final three commands.
+`release:build` runs the tests, lint, production build, route and metadata checks, privacy checks, and bundle-size gate. PowerShell users can set `$env:VITE_SITE_ORIGIN = "https://example.test"` before running it.
 
 ## Deployment
 
-Netlify builds with `npm run build` and publishes `dist`. Set `VITE_SITE_ORIGIN` to the final HTTPS origin before building. Pretty URLs normalize directory routes. The configuration intentionally has no SPA catch-all rewrite.
+The repository is configured for direct Netlify deployment through `netlify.toml`:
+
+- Build command: `npm run release:build`
+- Publish directory: `dist`
+- Node.js: version 22 (also recorded in `.nvmrc`)
+
+Import the repository in Netlify and deploy; Netlify's built-in `URL` environment variable supplies the production origin used by canonical and social metadata. If a custom domain should be canonical before it is assigned in Netlify, set `VITE_SITE_ORIGIN` to its full HTTPS origin and redeploy.
+
+Pretty URLs normalize directory routes. Explicit redirects normalize `.html` and `/index.html` variants, while unknown routes use the static `404.html`. The configuration intentionally has no SPA catch-all rewrite.
 
 ## Evidence boundaries
 

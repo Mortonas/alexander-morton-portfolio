@@ -5,13 +5,26 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
-  if (command === 'build' && !env.VITE_SITE_ORIGIN) {
-    throw new Error('VITE_SITE_ORIGIN is required for production canonical metadata.');
+  const siteOrigin = (env.VITE_SITE_ORIGIN || process.env.VITE_SITE_ORIGIN || process.env.URL || '').replace(/\/$/, '');
+  if (command === 'build' && !siteOrigin) {
+    throw new Error('A production origin is required. Set VITE_SITE_ORIGIN locally; Netlify supplies URL automatically.');
   }
 
   return {
     base: '/',
-    plugins: [react()],
+    plugins: [
+      {
+        name: 'canonical-site-origin',
+        enforce: 'pre',
+        transformIndexHtml: {
+          order: 'pre',
+          handler(html) {
+            return html.replaceAll('%VITE_SITE_ORIGIN%', siteOrigin);
+          },
+        },
+      },
+      react(),
+    ],
     build: {
       manifest: true,
       rollupOptions: {
