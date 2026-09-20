@@ -48,6 +48,24 @@ for (const image of ['dist/images/character-estate/project-overview.webp', 'dist
   if (bytes.includes(Buffer.from('EXIF')) || bytes.includes(Buffer.from('XMP '))) throw new Error(`metadata chunk found in ${image}`);
 }
 
+const encounterExportPath = 'dist/examples/encounter-factory/the-sanctum-of-shadows.html';
+const encounterExport = await fs.readFile(encounterExportPath, 'utf8');
+for (const prohibited of [
+  /fonts\.googleapis\.com/i,
+  /<script/i,
+  /<form/i,
+  /mailto:/i,
+  /discord/i,
+  /api[_ -]?key/i,
+  /password/i,
+  /bearer\s/i,
+]) {
+  if (prohibited.test(encounterExport)) throw new Error(`unsafe content reached ${encounterExportPath}: ${prohibited}`);
+}
+if (!encounterExport.includes('Work-in-progress Encounter Factory export')) {
+  throw new Error(`${encounterExportPath} is missing its work-in-progress disclosure`);
+}
+
 const manifest = JSON.parse(await fs.readFile('dist/.vite/manifest.json', 'utf8'));
 const selected = new Set();
 function addChunk(key) {
@@ -72,4 +90,4 @@ for (const file of homeFiles) {
   if (contents.includes('chart.js/auto') || contents.includes('CategoryScale')) throw new Error('Chart.js entered the home bundle');
 }
 
-console.log(JSON.stringify({ routes: routes.length, files: files.length, homeGzipBytes: actualGzipBytes }, null, 2));
+console.log(JSON.stringify({ routes: routes.length, files: files.length, homeGzipBytes: actualGzipBytes, encounterExportVerified: true }, null, 2));

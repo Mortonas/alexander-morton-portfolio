@@ -61,10 +61,18 @@ test('dashboard errors cannot mount dashboard content', async () => {
   assert.match(page, /Try again/);
 });
 
-test('Encounter Factory ends with a clearly qualified fictional output example', async () => {
+test('Encounter Factory ends with a clearly qualified existing HTML export', async () => {
   const page = await fs.readFile('src/pages/EncounterFactoryPage.jsx', 'utf8');
-  assert.match(page, /Example output · work in progress/);
-  assert.match(page, /The Bell Beneath Ashfall/);
-  assert.match(page, /No client submission or private campaign content/);
-  assert.match(page, /examples\/fictional-encounter\/encounter\.md/);
+  assert.match(page, /Existing HTML export · work in progress/);
+  assert.match(page, /The Sanctum of Shadows/);
+  assert.match(page, /existing fictional output from the unfinished system/);
+  assert.match(page, /examples\/encounter-factory\/the-sanctum-of-shadows\.html/);
+
+  const output = await fs.readFile('public/examples/encounter-factory/the-sanctum-of-shadows.html', 'utf8');
+  assert.match(output, /Work-in-progress Encounter Factory export/);
+  assert.match(output, /Encounter Analysis/);
+  assert.match(output, /Stat Blocks/);
+  assert.doesNotMatch(output, /fonts\.googleapis\.com/);
+  assert.doesNotMatch(output, /<script/i);
+  assert.doesNotMatch(output, /<form/i);
 });

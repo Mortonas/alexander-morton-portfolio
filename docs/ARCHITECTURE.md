@@ -21,5 +21,5 @@
 - Last updated: 2026-09-20
 - Responsibilities: present project claims without publishing restricted services or private workbook sources.
 - Inputs: public project repositories plus locally reviewed workbook and Apps Script evidence.
-- Outputs: approved screenshots, evidence-backed prose, and repository links.
-- Invariants: Encounter Factory is never hosted here; character workbook, ZIP, scripts, audit data, comments, embedded art, and calculation files never enter Git or `dist`; only two approved metadata-free WebP derivatives may be published.
+- Outputs: approved screenshots, evidence-backed prose, repository links, and one sanitized fictional Encounter Factory HTML export.
+- Invariants: the Encounter Factory service is never hosted here; its approved export is static, sandboxed in the page, stripped of external requests, and checked for scripts, forms, contact details, and credential-like text. Character workbook, ZIP, scripts, audit data, comments, embedded art, and calculation files never enter Git or `dist`; only two approved metadata-free workbook WebP derivatives may be published.

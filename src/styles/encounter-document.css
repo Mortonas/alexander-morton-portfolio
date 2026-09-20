@@ -3,160 +3,111 @@
   padding-bottom: 6rem;
 }
 
-.encounter-document {
-  overflow: hidden;
-  border: 1px solid #cbd7dd;
-  border-top: 6px solid var(--teal);
-  background: #fff;
-  box-shadow: 0 24px 70px rgba(23, 50, 77, 0.1);
-}
-
-.encounter-document > header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 2rem;
-  padding: 2rem 2.25rem;
-  border-bottom: 1px solid var(--line);
-  background: #f7fafb;
-}
-
-.encounter-document > header span {
-  display: block;
-  margin-bottom: 0.35rem;
-  color: var(--teal);
-  font-size: 0.72rem;
-  font-weight: 850;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.encounter-document > header h3 {
-  margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(2rem, 4vw, 3.4rem);
-  letter-spacing: -0.035em;
-}
-
-.encounter-document > header > strong {
-  flex: none;
-  padding: 0.45rem 0.7rem;
+.output-warning {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem 1.4rem;
+  align-items: start;
+  margin-bottom: 1.25rem;
+  padding: 1rem 1.2rem;
   border: 1px solid #f0b66d;
-  border-radius: 999px;
+  border-left: 5px solid var(--orange);
   background: #fff7ed;
-  color: #9a4b08;
+}
+
+.output-warning strong {
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  background: #9a4b08;
+  color: #fff;
   font-size: 0.72rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.document-intro {
+.output-warning p {
   margin: 0;
-  padding: 2rem 2.25rem;
-  border-bottom: 1px solid var(--line);
-  color: #394a57;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.15rem;
-  font-style: italic;
+  color: #6b421c;
 }
 
-.document-grid {
-  display: grid;
-  grid-template-columns: 0.8fr 1.35fr 1fr;
+.output-preview-shell {
+  overflow: hidden;
+  border: 1px solid #cbd7dd;
+  background: #211d1a;
+  box-shadow: 0 24px 70px rgba(23, 50, 77, 0.12);
 }
 
-.document-grid section {
-  padding: 2rem 2.25rem;
-  border-right: 1px solid var(--line);
-}
-
-.document-grid section:last-child {
-  border-right: 0;
-}
-
-.document-grid h4 {
-  margin: 0 0 0.75rem;
-  color: var(--navy);
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.document-grid p,
-.document-grid li {
-  color: #465763;
-}
-
-.document-grid p {
-  margin: 0;
-}
-
-.document-grid ul {
-  margin: 0;
-  padding-left: 1.2rem;
-}
-
-.document-grid li + li {
-  margin-top: 0.6rem;
-}
-
-.encounter-document > footer {
+.output-preview-toolbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  padding: 1.25rem 2.25rem;
-  border-top: 1px solid var(--line);
-  background: #f7fafb;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #40505b;
+  background: var(--navy-dark);
+  color: #fff;
 }
 
-.encounter-document > footer p {
+.output-preview-toolbar span,
+.output-preview-toolbar strong {
+  display: block;
+}
+
+.output-preview-toolbar span {
+  color: #94a8b5;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.output-preview-toolbar strong {
+  margin-top: 0.1rem;
+}
+
+.output-preview-toolbar .text-link {
+  flex: none;
   margin: 0;
+  color: #5eead4;
+}
+
+.encounter-output-frame {
+  display: block;
+  width: 100%;
+  height: min(76vh, 820px);
+  min-height: 620px;
+  border: 0;
+  background: #2a2520;
+}
+
+.output-provenance {
+  margin: 1rem 0 0;
   color: var(--muted);
   font-size: 0.82rem;
 }
 
-.encounter-document > footer .text-link {
-  flex: none;
-  margin: 0;
-}
-
-@media (max-width: 900px) {
-  .document-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .document-grid section {
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .document-grid section:last-child {
-    border-bottom: 0;
-  }
-
-  .encounter-document > footer {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-}
-
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .example-output-section {
     padding-top: 4rem;
     padding-bottom: 4rem;
   }
 
-  .encounter-document > header {
-    align-items: flex-start;
-    flex-direction: column;
-    padding: 1.5rem;
+  .output-warning {
+    grid-template-columns: 1fr;
   }
 
-  .document-intro,
-  .document-grid section,
-  .encounter-document > footer {
-    padding: 1.5rem;
+  .output-warning strong {
+    justify-self: start;
+  }
+
+  .output-preview-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .encounter-output-frame {
+    height: 680px;
+    min-height: 0;
   }
 }

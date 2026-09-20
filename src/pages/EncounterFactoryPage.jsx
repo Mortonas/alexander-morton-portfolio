@@ -82,49 +82,31 @@ export default function EncounterFactoryPage() {
 
         <section className="section example-output-section" aria-labelledby="example-output-title">
           <div className="section-heading">
-            <p className="eyebrow">Example output · work in progress</p>
-            <h2 id="example-output-title">What an encounter document can look like</h2>
-            <p>This existing fictional example is included with the Encounter Factory repository. It demonstrates the intended human-readable result, but the application and document structure are still being developed.</p>
+            <p className="eyebrow">Existing HTML export · work in progress</p>
+            <h2 id="example-output-title">A fuller encounter document produced by the system</h2>
+            <p>I found this existing Encounter Factory export saved locally on this computer. Unlike the earlier hand-written repository fixture, it contains a complete styled encounter with scene-setting, tactical zones, calculated targets, enemy statistics, a round-by-round run sheet, and design notes.</p>
           </div>
 
-          <article className="encounter-document" aria-label="Example work-in-progress encounter document">
-            <header>
-              <div>
-                <span>Encounter Factory · Fictional example</span>
-                <h3>The Bell Beneath Ashfall</h3>
-              </div>
-              <strong>Work in progress</strong>
-            </header>
+          <aside className="output-warning" aria-label="Work-in-progress output notice">
+            <strong>Work in progress</strong>
+            <p>This is an existing fictional output from the unfinished system, not a promise of final quality or format. It may contain mechanical or editorial issues that still need review.</p>
+          </aside>
 
-            <p className="document-intro">The party enters a leaning bell chamber while a survey crew shelters behind a cracked stone screen. Every heavy impact shakes more ash through the rafters.</p>
-
-            <div className="document-grid">
-              <section aria-labelledby="example-objective-title">
-                <h4 id="example-objective-title">Objective</h4>
-                <p>Release two jammed counterweights and lead the crew through the western arch before the fourth structural shift.</p>
-              </section>
-
-              <section aria-labelledby="example-pressure-title">
-                <h4 id="example-pressure-title">Tactical pressure</h4>
-                <ul>
-                  <li>Ashbound sentinels guard separate counterweights and try to divide rescuers from defenders.</li>
-                  <li>A character can spend an action to clear, brace, or release a mechanism instead of attacking.</li>
-                  <li>At the end of each round, mark one structural shift. A braced support cancels the next shift.</li>
-                  <li>The sentinels withdraw when both counterweights are released; defeating them is optional.</li>
-                </ul>
-              </section>
-
-              <section aria-labelledby="example-outcomes-title">
-                <h4 id="example-outcomes-title">Possible outcomes</h4>
-                <p>Fast coordination rescues everyone and preserves the tower’s survey records. A slower victory can still save the crew while losing equipment or access to the lower archive. Retreat leaves the site unstable but does not dictate what the group does next.</p>
-              </section>
+          <div className="output-preview-shell">
+            <div className="output-preview-toolbar">
+              <div><span>Encounter Factory export</span><strong>The Sanctum of Shadows</strong></div>
+              <a className="text-link" href="/examples/encounter-factory/the-sanctum-of-shadows.html" target="_blank" rel="noreferrer">Open full document <ExternalLink size={15} aria-hidden="true" /></a>
             </div>
+            <iframe
+              className="encounter-output-frame"
+              src="/examples/encounter-factory/the-sanctum-of-shadows.html"
+              title="Work-in-progress Encounter Factory export: The Sanctum of Shadows"
+              sandbox=""
+              loading="lazy"
+            />
+          </div>
 
-            <footer>
-              <p>Original fictional evaluation material. No client submission or private campaign content.</p>
-              <a className="text-link" href="https://github.com/Mortonas/Encounter-Factory/blob/main/examples/fictional-encounter/encounter.md" target="_blank" rel="noreferrer">View the source example <ExternalLink size={15} aria-hidden="true" /></a>
-            </footer>
-          </article>
+          <p className="output-provenance">Privacy review: the portfolio copy contains fictional encounter material only. The external font request was removed, the preview is sandboxed, and no scripts, forms, client contact details, or provider credentials are included.</p>
         </section>
       </main>
     </SiteLayout>
