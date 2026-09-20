@@ -39,6 +39,8 @@ test('project registry describes each project by its actual type', async () => {
   const characterEstate = projects.find(({ slug }) => slug === 'character-estate-automation');
   assert.equal(characterEstate.label, 'Spreadsheet automation project');
   assert.equal(projects[0].label, 'Data analysis project');
+  assert.equal(projects[0].image, '/images/online-retail/monthly-revenue-chart.svg');
+  await fs.access('public/images/online-retail/monthly-revenue-chart.svg');
 });
 
 test('Netlify config has no global home-page fallback', async () => {

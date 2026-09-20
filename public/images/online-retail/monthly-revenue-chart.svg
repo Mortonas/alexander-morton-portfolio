@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Online retail monthly revenue dashboard</title>
+  <desc id="desc">Key metrics above a line chart comparing monthly gross sales, net revenue, and cancellation value from December 2010 to December 2011.</desc>
+  <rect width="1200" height="675" fill="#f4f8fa"/>
+  <rect x="1" y="1" width="1198" height="673" fill="none" stroke="#d7e0e5" stroke-width="2"/>
+  <text x="64" y="56" fill="#0f766e" font-family="Inter,Segoe UI,sans-serif" font-size="15" font-weight="800" letter-spacing="2">PERFORMANCE AT A GLANCE</text>
+
+  <g font-family="Inter,Segoe UI,sans-serif">
+    <rect x="64" y="82" width="332" height="92" rx="8" fill="#ffffff" stroke="#d7e0e5"/>
+    <text x="88" y="112" fill="#56636f" font-size="14" font-weight="700">NET REVENUE</text>
+    <text x="88" y="151" fill="#17324d" font-size="31" font-weight="800">£9.75m</text>
+
+    <rect x="434" y="82" width="332" height="92" rx="8" fill="#ffffff" stroke="#d7e0e5"/>
+    <text x="458" y="112" fill="#56636f" font-size="14" font-weight="700">COMPLETED ORDERS</text>
+    <text x="458" y="151" fill="#17324d" font-size="31" font-weight="800">19,960</text>
+
+    <rect x="804" y="82" width="332" height="92" rx="8" fill="#ffffff" stroke="#d7e0e5"/>
+    <text x="828" y="112" fill="#56636f" font-size="14" font-weight="700">AVERAGE ORDER VALUE</text>
+    <text x="828" y="151" fill="#17324d" font-size="31" font-weight="800">£533.17</text>
+
+    <text x="64" y="220" fill="#17324d" font-size="25" font-weight="800">Monthly revenue</text>
+    <text x="64" y="246" fill="#56636f" font-size="14">Gross sales, cancellation value, and net revenue</text>
+  </g>
+
+  <g stroke="#d7e0e5" stroke-width="1">
+    <line x1="90" y1="180" x2="1110" y2="180"/>
+    <line x1="90" y1="275" x2="1110" y2="275"/>
+    <line x1="90" y1="370" x2="1110" y2="370"/>
+    <line x1="90" y1="465" x2="1110" y2="465"/>
+    <line x1="90" y1="560" x2="1110" y2="560"/>
+  </g>
+  <g fill="#6b7781" font-family="Inter,Segoe UI,sans-serif" font-size="12" text-anchor="end">
+    <text x="78" y="184">£1.6m</text>
+    <text x="78" y="279">£1.2m</text>
+    <text x="78" y="374">£0.8m</text>
+    <text x="78" y="469">£0.4m</text>
+    <text x="78" y="564">£0</text>
+  </g>
+
+  <polyline points="90,364.9 175,396.2 260,435.9 345,389.9 430,432.5 515,377.3 600,379.4 685,389.5 770,380 855,309.1 940,286.6 1025,202.8 1110,408.5" fill="none" stroke="#0f766e" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="90,382.7 175,427.4 260,442 345,398 430,443.1 515,388.5 600,396.1 685,398.5 770,392.9 855,318.3 940,306 1025,214.2 1110,457.2" fill="none" stroke="#17324d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="90,542.3 175,528.8 260,553.9 345,551.9 430,549.4 515,548.8 600,543.2 685,551 770,547.1 855,550.8 940,540.5 1025,548.7 1110,511.3" fill="none" stroke="#c2410c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g fill="#17324d">
+    <circle cx="1025" cy="214.2" r="7"/>
+    <rect x="935" y="185" width="150" height="1" fill="#17324d" opacity=".2"/>
+  </g>
+  <g font-family="Inter,Segoe UI,sans-serif">
+    <text x="1025" y="191" fill="#17324d" font-size="13" font-weight="800" text-anchor="middle">£1.46m peak net revenue</text>
+  </g>
+
+  <g fill="#6b7781" font-family="Inter,Segoe UI,sans-serif" font-size="11" text-anchor="middle">
+    <text x="90" y="590">Dec ’10</text>
+    <text x="260" y="590">Feb</text>
+    <text x="430" y="590">Apr</text>
+    <text x="600" y="590">Jun</text>
+    <text x="770" y="590">Aug</text>
+    <text x="940" y="590">Oct</text>
+    <text x="1110" y="590">Dec ’11</text>
+  </g>
+
+  <g font-family="Inter,Segoe UI,sans-serif" font-size="13" font-weight="700">
+    <circle cx="356" cy="628" r="7" fill="#0f766e"/><text x="370" y="633" fill="#56636f">Gross sales</text>
+    <circle cx="545" cy="628" r="7" fill="#17324d"/><text x="559" y="633" fill="#56636f">Net revenue</text>
+    <circle cx="738" cy="628" r="7" fill="#c2410c"/><text x="752" y="633" fill="#56636f">Cancellation value</text>
+  </g>
+</svg>

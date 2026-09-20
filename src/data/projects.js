@@ -8,7 +8,7 @@ export const projects = [
     skills: ['Python', 'SQL', 'SQLite', 'Excel', 'React'],
     metrics: ['541,909 source rows', 'Exact Python–SQL reconciliation', 'Versioned JSON contract'],
     repositoryUrl: 'https://github.com/Mortonas/online-retail-performance-analysis',
-    image: '/social/online-retail.png',
+    image: '/images/online-retail/monthly-revenue-chart.svg',
     href: '/projects/online-retail/',
     sections: ['Preparation', 'Data quality', 'Dashboard', 'Evidence'],
     limitations: 'Descriptive analysis only; cancellation documents cannot be linked to original invoices.',
