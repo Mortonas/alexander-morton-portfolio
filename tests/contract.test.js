@@ -25,8 +25,7 @@ test('accepts complete contract 1.1 and derives reviewed findings', () => {
 });
 
 test('accepts legacy contract 1.0 without additive fields', async () => {
-  const legacy = JSON.parse(await readFile(new URL('../Chart example/tests/fixtures/v1.0/dashboard-v1.json', root), 'utf8').catch(async () =>
-    readFile('C:/Projects/Chart example/tests/fixtures/v1.0/dashboard-v1.json', 'utf8')));
+  const legacy = JSON.parse(await readFile(new URL('fixtures/v1.0/dashboard-v1.json', import.meta.url), 'utf8'));
   assert.equal(validateDashboard(legacy, schema).metadata.contract_version, '1.0.0');
 });
 
