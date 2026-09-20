@@ -44,10 +44,8 @@ for (const file of normalized) {
 }
 
 const approvedCharacterImages = [
-  'dist/images/character-estate/project-overview.webp',
   'dist/images/character-estate/estate-overview.webp',
   'dist/images/character-estate/front-sheet.webp',
-  'dist/images/character-estate/back-sheet.webp',
 ];
 const builtCharacterImages = normalized.filter((file) => file.startsWith('dist/images/character-estate/')).sort();
 if (JSON.stringify(builtCharacterImages) !== JSON.stringify([...approvedCharacterImages].sort())) {

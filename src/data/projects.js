@@ -36,7 +36,7 @@ export const projects = [
     skills: ['Google Sheets', 'Excel', 'Apps Script', 'Data validation', 'Workflow design'],
     metrics: ['10 operational sheets + 1 overview', '974 formula cells', '17 validation objects'],
     repositoryUrl: null,
-    image: '/images/character-estate/project-overview.webp',
+    image: '/images/character-estate/front-sheet.webp',
     href: '/projects/character-estate-automation/',
     sections: ['Data structure', 'Formula lineage', 'Input controls', 'Automation'],
     limitations: 'The source workbook and scripts are intentionally not published.',
