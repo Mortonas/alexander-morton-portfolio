@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+.netlify/
+.agent/
+.vscode/
+coverage/
+*.log
+*.tmp
+*.zip
+*.gs
+*.xlsm
+Ultimate_Character*
+character-estate-release-audit.json
+character-estate-evidence-map.md

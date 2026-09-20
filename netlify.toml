@@ -1,0 +1,52 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[build.processing.html]
+  pretty_urls = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[redirects]]
+  from = "/projects/online-retail.html"
+  to = "/projects/online-retail/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/projects/online-retail/index.html"
+  to = "/projects/online-retail/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/projects/encounter-factory.html"
+  to = "/projects/encounter-factory/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/projects/encounter-factory/index.html"
+  to = "/projects/encounter-factory/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/projects/character-estate-automation.html"
+  to = "/projects/character-estate-automation/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/projects/character-estate-automation/index.html"
+  to = "/projects/character-estate-automation/"
+  status = 301
+  force = true
