@@ -1,4 +1,5 @@
-import { Bot, Calculator, CheckCircle2, ExternalLink, FileText, ListChecks } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
+import EncounterWorkflow from '../components/EncounterWorkflow.jsx';
 import ProjectHero from '../components/ProjectHero.jsx';
 import SiteLayout from '../components/SiteLayout.jsx';
 import '../styles/encounter-document.css';
@@ -8,17 +9,59 @@ export default function EncounterFactoryPage() {
     <SiteLayout>
       <main id="main">
         <ProjectHero
-          eyebrow="Application in progress"
+          eyebrow="Engineering case study · Work in progress"
           title="Encounter Factory"
           subtitle="From a D&D party briefing to a usable encounter document"
           lede="Encounter Factory is an unfinished system I am building for Dungeon Masters—the people who run Dungeons & Dragons games. They describe their party, setting, objective, and preferences; the application checks the encounter math and uses AI to help write an interesting, structured encounter document."
           repositoryUrl="https://github.com/Mortonas/Encounter-Factory"
-          meta={['React + TypeScript', 'Express', 'Deterministic MathEngine', 'AI-assisted generation', 'Work in progress']}
+          repositoryLabel="View Encounter Factory repository"
+          meta={['My role: product design and full-stack engineering', 'React + TypeScript', 'Express', 'Deterministic MathEngine', 'Local evaluation only']}
         />
+
+        <section className="section encounter-overview" aria-labelledby="encounter-overview-title">
+          <div className="section-heading">
+            <p className="eyebrow">Problem → approach → outcome</p>
+            <h2 id="encounter-overview-title">A structured answer to an unreliable generation problem</h2>
+          </div>
+          <div className="case-study-triad">
+            <article>
+              <span>01</span>
+              <h3>Problem</h3>
+              <p>A useful D&D encounter has to combine party capabilities, balance, tactics, terrain, story, and clear instructions. A single unstructured AI response can blur trusted calculations with creative suggestions.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>Approach</h3>
+              <p>I separated deterministic math and service controls from bounded AI stages, then added typed schemas, mechanical audits, a repair path, and persistent checkpoints.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>Outcome</h3>
+              <p>The unfinished system can turn one detailed briefing into a reviewable encounter package with mechanical targets, game-master guidance, and HTML, VTT, and Obsidian-ready exports.</p>
+            </article>
+          </div>
+
+          <aside className="why-it-matters" aria-labelledby="why-it-matters-title">
+            <div>
+              <p className="eyebrow">Why this project matters</p>
+              <h3 id="why-it-matters-title">Creative AI work becomes easier to inspect and recover</h3>
+            </div>
+            <p>The design makes complex generation more structured, reviewable, recoverable, and reusable across sessions. Its safeguards preserve completed work, keep important calculations visible, and produce practical formats a game master can inspect before using.</p>
+          </aside>
+
+          <nav className="encounter-evidence-links" aria-label="Encounter Factory evidence">
+            <a href="https://github.com/Mortonas/Encounter-Factory" target="_blank" rel="noreferrer">View Encounter Factory repository <ExternalLink size={14} aria-hidden="true" /></a>
+            <a href="https://github.com/Mortonas/Encounter-Factory#readme" target="_blank" rel="noreferrer">Read the project README <ExternalLink size={14} aria-hidden="true" /></a>
+            <a href="https://github.com/Mortonas/Encounter-Factory/blob/main/docs/ARCHITECTURE.md" target="_blank" rel="noreferrer">Read the architecture overview <ExternalLink size={14} aria-hidden="true" /></a>
+            <a href="#example-output-title">View the generated encounter document</a>
+          </nav>
+        </section>
+
+        <EncounterWorkflow />
 
         <section className="section media-section lead-media" aria-labelledby="briefing-title">
           <div className="section-heading">
-            <p className="eyebrow">The starting point</p>
+            <p className="eyebrow">Input evidence</p>
             <h2 id="briefing-title">The game master fills in one detailed briefing</h2>
             <p>The form captures the player characters, requested enemies and allies, the location, the win condition, the desired tone, and the story details that should shape the encounter. This example uses fictional mock data.</p>
           </div>
@@ -26,29 +69,6 @@ export default function EncounterFactoryPage() {
             <img src="/images/encounter-factory/briefing-intake.png" alt="Encounter Factory briefing form filled with fictional information for a Dungeons and Dragons party, enemy, ally, setting, and narrative goals" />
             <figcaption>A filled fictional briefing shows the information used to calculate and write the encounter.</figcaption>
           </figure>
-        </section>
-
-        <section className="section metric-strip" aria-label="Project status and design highlights">
-          <article><strong>In progress</strong><span>unfinished local application</span></article>
-          <article><strong>1 briefing</strong><span>party, scenario, and story inputs</span></article>
-          <article><strong>Math + AI</strong><span>separate responsibilities</span></article>
-          <article><strong>Document</strong><span>reviewable encounter output</span></article>
-        </section>
-
-        <section className="section split narrative-section" aria-labelledby="encounter-flow-title">
-          <div>
-            <p className="eyebrow">What I am building</p>
-            <h2 id="encounter-flow-title">AI handles the creative work, not the trusted numbers</h2>
-            <p>The application is designed to keep two responsibilities separate. Code calculates measurable targets such as encounter pressure, durability, damage, pacing, and action balance. AI works inside those boundaries to propose the situation, tactics, complications, and presentation.</p>
-            <p>That separation is important: generated writing can make the encounter more imaginative, but it cannot silently change the mechanical targets owned by the MathEngine.</p>
-          </div>
-          <ol className="process-list">
-            <li><ListChecks aria-hidden="true" /><div><strong>Collect the briefing</strong><span>The game master describes the party, mission, opposition, tone, and constraints.</span></div></li>
-            <li><Calculator aria-hidden="true" /><div><strong>Calculate the pressure</strong><span>Deterministic code establishes encounter targets from the submitted party information.</span></div></li>
-            <li><Bot aria-hidden="true" /><div><strong>Generate within boundaries</strong><span>AI turns the checked inputs into creative encounter material without owning the core math.</span></div></li>
-            <li><CheckCircle2 aria-hidden="true" /><div><strong>Validate and recover</strong><span>Typed schemas, retries, checkpoints, and visible job state make failures reviewable.</span></div></li>
-            <li><FileText aria-hidden="true" /><div><strong>Review the document</strong><span>The result is packaged for the game master to inspect and export before using it at the table.</span></div></li>
-          </ol>
         </section>
 
         <section className="section media-section alt" aria-labelledby="operator-title">

@@ -31,8 +31,9 @@ test('project registry provides stable clean routes', () => {
 
 test('project registry describes each project by its actual type', async () => {
   const encounter = projects.find(({ slug }) => slug === 'encounter-factory');
-  assert.equal(encounter.label, 'Application in progress');
-  assert.match(encounter.summary, /unfinished D&D tool/i);
+  assert.equal(encounter.label, 'Engineering case study');
+  assert.equal(encounter.linkLabel, 'View Encounter Factory case study');
+  assert.match(encounter.summary, /unfinished D&D application/i);
   assert.equal(encounter.image, '/images/encounter-factory/briefing-intake.png');
   await fs.access('public/images/encounter-factory/briefing-intake.png');
 
@@ -75,4 +76,14 @@ test('Encounter Factory ends with a clearly qualified existing HTML export', asy
   assert.doesNotMatch(output, /fonts\.googleapis\.com/);
   assert.doesNotMatch(output, /<script/i);
   assert.doesNotMatch(output, /<form/i);
+});
+
+test('Encounter Factory exposes descriptive employer evidence links', async () => {
+  const page = await fs.readFile('src/pages/EncounterFactoryPage.jsx', 'utf8');
+  assert.match(page, />View Encounter Factory repository/);
+  assert.match(page, />Read the project README/);
+  assert.match(page, />Read the architecture overview/);
+  assert.match(page, />View the generated encounter document/);
+  assert.match(page, /unfinished system/i);
+  assert.match(page, /Work in progress/);
 });

@@ -16,9 +16,9 @@ export const projects = [
   {
     slug: 'encounter-factory',
     title: 'Encounter Factory',
-    label: 'Application in progress',
-    linkLabel: 'See how it works',
-    summary: 'An unfinished D&D tool where a game master enters party and scenario details, then AI helps create a mechanically grounded encounter document.',
+    label: 'Engineering case study',
+    linkLabel: 'View Encounter Factory case study',
+    summary: 'An unfinished D&D application where a game master submits a party briefing and a guarded ten-stage pipeline builds a mechanically grounded encounter document.',
     skills: ['TypeScript', 'React', 'Express', 'Zod', 'Background jobs'],
     metrics: ['2 guided workflows', 'Deterministic math layer', 'Persistent recovery state'],
     repositoryUrl: 'https://github.com/Mortonas/Encounter-Factory',
