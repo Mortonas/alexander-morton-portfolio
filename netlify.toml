@@ -66,3 +66,15 @@
   to = "/projects/character-estate-automation/"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/projects/traveller-notes.html"
+  to = "/projects/traveller-notes/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/projects/traveller-notes/index.html"
+  to = "/projects/traveller-notes/"
+  status = 301
+  force = true

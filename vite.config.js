@@ -33,6 +33,7 @@ export default defineConfig(({ command, mode }) => {
           onlineRetail: resolve(import.meta.dirname, 'projects/online-retail/index.html'),
           encounterFactory: resolve(import.meta.dirname, 'projects/encounter-factory/index.html'),
           characterEstate: resolve(import.meta.dirname, 'projects/character-estate-automation/index.html'),
+          travellerNotes: resolve(import.meta.dirname, 'projects/traveller-notes/index.html'),
           notFound: resolve(import.meta.dirname, '404.html'),
         },
       },

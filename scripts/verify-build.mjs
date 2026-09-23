@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { gzipSync } from 'node:zlib';
+import { verifyTravellerPrivacy } from './verify-traveller-privacy.mjs';
 
 const origin = (process.env.VITE_SITE_ORIGIN || process.env.URL || '').replace(/\/$/, '');
 if (!origin) throw new Error('VITE_SITE_ORIGIN is required locally; Netlify supplies URL automatically.');
@@ -10,6 +11,7 @@ const routes = [
   ['projects/online-retail/index.html', 'Online Retail Performance Analysis | Alexander Morton', `${origin}/projects/online-retail/`, 'online-retail'],
   ['projects/encounter-factory/index.html', 'Encounter Factory | Alexander Morton', `${origin}/projects/encounter-factory/`, 'encounter-factory'],
   ['projects/character-estate-automation/index.html', 'Character &amp; Estate Automation | Alexander Morton', `${origin}/projects/character-estate-automation/`, 'character-estate'],
+  ['projects/traveller-notes/index.html', 'Traveller Notes | Alexander Morton', `${origin}/projects/traveller-notes/`, 'traveller-notes'],
 ];
 
 for (const [relative, title, canonical, page] of routes) {
@@ -35,6 +37,7 @@ async function walk(directory) {
 
 const files = await walk('dist');
 const normalized = files.map((file) => file.replaceAll('\\', '/'));
+verifyTravellerPrivacy(normalized);
 const allowedWorkbook = 'dist/artifacts/online-retail-case-study.xlsx';
 for (const file of normalized) {
   const lower = file.toLowerCase();

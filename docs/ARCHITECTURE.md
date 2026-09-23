@@ -1,12 +1,13 @@
 # Architecture
 
 ## Static multi-page portfolio
-- Last updated: 2026-09-20
-- Responsibilities: publish one portfolio home and three independently addressable project documents with shared React presentation.
-- Key files: `vite.config.js`, the four HTML entries, `src/main.jsx`, `netlify.toml`.
+- Last updated: 2026-09-22
+- Responsibilities: publish one portfolio home and four independently addressable project documents with shared React presentation.
+- Key files: `vite.config.js`, the five HTML entries, `src/main.jsx`, `netlify.toml`.
 - Inputs: page identifier embedded in each physical HTML document.
 - Outputs: directory `index.html` files under `dist`, root-absolute static assets, and a static `404.html`.
 - Invariants: canonical project paths end in `/`; each route owns its metadata; there is no global home-page fallback; Netlify Pretty URLs owns slash normalization.
+- Traveller Notes route: `/projects/traveller-notes/` is served by physical `projects/traveller-notes/index.html`; `.html` and `/index.html` aliases redirect to that URL, with no slash-only redirect.
 
 ## Online Retail boundary
 - Last updated: 2026-09-20
@@ -42,3 +43,11 @@
 - Outputs: evidence-backed prose, one semantic four-layer system map, technical-pattern summaries, and two approved workbook WebP derivatives.
 - Invariants: public data contains no raw formulas, comments, artwork, scripts, source hashes, audits, or evidence maps; audited evidence includes 974 formula cells, 254 formulas in `Tracking`, 14 stable-record blocks, 17 validation objects, two reviewed scripts, and 15 explicit mappings across 16 selectable Estate Overview outcome pairs; the site publishes only `front-sheet.webp` and `estate-overview.webp` as workbook-derived images; the approved renders may contain reviewed labels and cached fictional example values but omit comments and embedded images; the site never executes the workbook or scripts.
 - Compatibility/versioning: a source-hash or audited-metric mismatch blocks publication. Presentation data and tests may change only after the private evidence review is repeated and approved.
+
+## Traveller Notes presentation and privacy
+- Last updated: 2026-09-22
+- Responsibilities: explain a private Python workflow that selects worlds from Traveller Map, optionally fetches Traveller RPG Wiki context, and writes draft linked notes for human review.
+- Source boundary: the bulk workflow uses world names and subsector identifiers for selection/grouping; coordinates support separate jump exploration. Other available sector fields are not asserted as prompt inputs. Imported records, community lore, and generated draft fiction have separate labels in the page and illustration.
+- Public outputs: one physical project page, its route-specific code and styles, and exactly one project-specific static evidence asset: `public/images/traveller-notes/fictional-workflow.svg`. The existing portfolio social image is reused.
+- Private inputs: the `C:\Projects\Traveller Notes` checkout, every configured Obsidian vault (`ISS_VAULT_PATH`), `vault/`, `custom_vault/`, `notes/`, `test_output/`, raw sector/world exports, full wiki pulls, backups, `.env`, `zettel_state.json` or other progress/state JSON, and related `.md`, `.json`, `.csv`, `.tsv`, or `.txt` material. These are never Vite inputs or public assets.
+- Invariants: Git and `dist` privacy checks fail on private paths or raw note/data exports; only the fictional SVG may appear as Traveller Notes static evidence. Progress is kept in the private workflow. The portfolio does not run the importer or approve game-master drafts.

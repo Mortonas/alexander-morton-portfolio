@@ -22,7 +22,7 @@ export default function HomePage() {
           <div className="section-heading">
             <p className="eyebrow">Selected work</p>
             <h2 id="work-title">Different projects, one careful way of working</h2>
-            <p>Online Retail is a complete data analysis. Encounter Factory is an application I am still building. Character &amp; Estate Automation shows how I organize and automate a complex spreadsheet workflow.</p>
+            <p>Online Retail is a complete data analysis. Encounter Factory is an application I am still building. Character &amp; Estate Automation shows a linked spreadsheet system. Traveller Notes turns large world lists into campaign preparation drafts.</p>
           </div>
           <div className="project-list">
             {projects.map((project, index) => <ProjectCard key={project.slug} project={project} featured={index === 0} />)}

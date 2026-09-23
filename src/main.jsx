@@ -7,6 +7,7 @@ const pageLoaders = {
   'online-retail': () => import('./pages/OnlineRetailPage.jsx'),
   'encounter-factory': () => import('./pages/EncounterFactoryPage.jsx'),
   'character-estate': () => import('./pages/CharacterEstatePage.jsx'),
+  'traveller-notes': () => import('./pages/TravellerNotesPage.jsx'),
   'not-found': () => import('./pages/NotFoundPage.jsx'),
 };
 

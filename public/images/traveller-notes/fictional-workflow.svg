@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 620" role="img" aria-labelledby="title description">
+  <title id="title">Fictional world record becomes a draft game note</title>
+  <desc id="description">Three labeled bands distinguish imported facts, optional lore context, and generated prep notes. This is a fictional illustration.</desc>
+  <rect width="1080" height="620" fill="#eef5f5"/>
+  <text x="48" y="62" font-family="Arial, sans-serif" font-weight="700" font-size="20" letter-spacing="3" fill="#0f766e">TRAVELLER NOTES · FICTIONAL ILLUSTRATION</text>
+  <text x="48" y="113" font-family="Arial, sans-serif" font-weight="700" font-size="43" fill="#17324d">From world list to game-night draft</text>
+  <g font-family="Arial, sans-serif">
+    <rect x="48" y="145" width="984" height="122" rx="12" fill="#ffffff" stroke="#c6d8da"/>
+    <rect x="48" y="145" width="13" height="122" fill="#0f766e"/>
+    <text x="85" y="181" font-size="18" font-weight="700" fill="#0f766e">01  IMPORTED FACTS</text>
+    <text x="85" y="219" font-size="28" font-weight="700" fill="#17324d">World: Lantern Bay</text>
+    <text x="550" y="218" font-size="23" fill="#45596a">Region: The Glass Reach</text>
+    <rect x="48" y="282" width="984" height="122" rx="12" fill="#ffffff" stroke="#c6d8da"/>
+    <rect x="48" y="282" width="13" height="122" fill="#365f89"/>
+    <text x="85" y="318" font-size="18" font-weight="700" fill="#365f89">02  LORE CONTEXT</text>
+    <text x="85" y="358" font-size="23" fill="#17324d">Optional background: a busy stop for passing ships</text>
+    <rect x="48" y="419" width="984" height="145" rx="12" fill="#ffffff" stroke="#c6d8da"/>
+    <rect x="48" y="419" width="13" height="145" fill="#b45309"/>
+    <text x="85" y="455" font-size="18" font-weight="700" fill="#9a4705">03  GENERATED PREP NOTES</text>
+    <text x="85" y="494" font-size="23" fill="#17324d">Draft hook: a missing courier leads to the old landing pier.</text>
+    <text x="85" y="531" font-size="20" fill="#45596a">Linked notes: [[Courier]] · [[Landing Pier]] · review before play</text>
+  </g>
+  <text x="48" y="600" font-family="Arial, sans-serif" font-size="15" fill="#45596a">Made-up names and details. No source record, wiki article, or live campaign note is reproduced.</text>
+</svg>

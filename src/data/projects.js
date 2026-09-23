@@ -41,4 +41,18 @@ export const projects = [
     sections: ['Data structure', 'Formula lineage', 'Input controls', 'Automation'],
     limitations: 'The source workbook and scripts are intentionally not published.',
   },
+  {
+    slug: 'traveller-notes',
+    title: 'Traveller Notes',
+    label: 'Data-to-preparation project',
+    linkLabel: 'View Traveller Notes project',
+    summary: 'A private Python workflow that organizes fictional worlds at scale and turns selected records into linked draft notes for a game master.',
+    skills: ['Python', 'API data', 'Batch processing', 'Linked notes'],
+    metrics: ['Sector-scale world lists', 'Optional wiki context', 'Private progress tracking'],
+    repositoryUrl: null,
+    image: '/images/traveller-notes/fictional-workflow.svg',
+    href: '/projects/traveller-notes/',
+    sections: ['Imported facts', 'Lore context', 'Draft notes'],
+    limitations: 'Generated notes require game-master review; the source code and vault remain private.',
+  },
 ];

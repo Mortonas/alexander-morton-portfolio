@@ -16,3 +16,13 @@ Ultimate_Character*
 character-estate-release-audit.json
 character-estate-evidence-map.md
 artifacts/release-verification/
+# Traveller Notes private workspace material
+vault/
+custom_vault/
+notes/
+test_output/
+raw-imports/
+wiki-pulls/
+sector-exports/
+zettel_state.json
+*_backup_*/

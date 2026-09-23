@@ -8,6 +8,7 @@ const entries = [
   ['projects/online-retail/index.html', 'online-retail', '/projects/online-retail/'],
   ['projects/encounter-factory/index.html', 'encounter-factory', '/projects/encounter-factory/'],
   ['projects/character-estate-automation/index.html', 'character-estate', '/projects/character-estate-automation/'],
+  ['projects/traveller-notes/index.html', 'traveller-notes', '/projects/traveller-notes/'],
 ];
 
 for (const [file, page, canonical] of entries) {
@@ -26,6 +27,7 @@ test('project registry provides stable clean routes', () => {
     '/projects/online-retail/',
     '/projects/encounter-factory/',
     '/projects/character-estate-automation/',
+    '/projects/traveller-notes/',
   ]);
 });
 
@@ -50,7 +52,7 @@ test('Netlify config has no global home-page fallback', async () => {
   const config = await fs.readFile('netlify.toml', 'utf8');
   assert.doesNotMatch(config, /from\s*=\s*"\/\*"[\s\S]*to\s*=\s*"\/index\.html"/);
   assert.match(config, /pretty_urls\s*=\s*true/);
-  for (const slug of ['online-retail', 'encounter-factory', 'character-estate-automation']) {
+  for (const slug of ['online-retail', 'encounter-factory', 'character-estate-automation', 'traveller-notes']) {
     assert.match(config, new RegExp(`/projects/${slug}\\.html`));
     assert.match(config, new RegExp(`/projects/${slug}/index\\.html`));
   }

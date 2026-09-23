@@ -25,6 +25,7 @@ const routes = [
   ['/projects/online-retail/', 'Online Retail Performance Analysis | Alexander Morton', `${origin}/projects/online-retail/`],
   ['/projects/encounter-factory/', 'Encounter Factory | Alexander Morton', `${origin}/projects/encounter-factory/`],
   ['/projects/character-estate-automation/', 'Character &amp; Estate Automation | Alexander Morton', `${origin}/projects/character-estate-automation/`],
+  ['/projects/traveller-notes/', 'Traveller Notes | Alexander Morton', `${origin}/projects/traveller-notes/`],
 ];
 
 try {
@@ -33,6 +34,11 @@ try {
     const response = await fetch(`${base}${route}`);
     const html = await response.text();
     if (!response.ok || !html.includes(`<title>${title}</title>`) || !html.includes(`href="${canonical}"`)) throw new Error(`direct request failed for ${route}`);
+  }
+  const physical = await fetch(`${base}/projects/traveller-notes/index.html`);
+  const physicalHtml = await physical.text();
+  if (!physical.ok || !physicalHtml.includes('<title>Traveller Notes | Alexander Morton</title>')) {
+    throw new Error('Traveller Notes physical index did not serve its project document');
   }
   for (const asset of ['/data/dashboard-v1.json', '/data/dashboard-v1.sha256', '/data/dashboard-v1.schema.json', '/artifacts/online-retail-case-study.xlsx']) {
     const response = await fetch(`${base}${asset}`);
