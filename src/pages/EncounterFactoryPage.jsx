@@ -12,7 +12,7 @@ export default function EncounterFactoryPage() {
           eyebrow="Engineering case study · Work in progress"
           title="Encounter Factory"
           subtitle="From a D&D party briefing to a usable encounter document"
-          lede="Encounter Factory is an unfinished system I am building for Dungeon Masters—the people who run Dungeons & Dragons games. They describe their party, setting, objective, and preferences; the application checks the encounter math and uses AI to help write an interesting, structured encounter document."
+          lede="I am building Encounter Factory for the people who run Dungeons & Dragons games. They describe the players' characters and the kind of scene they want. The application checks the encounter math, then uses AI to help draft a document they can review and run at the table. It is still in development."
           repositoryUrl="https://github.com/Mortonas/Encounter-Factory"
           repositoryLabel="View Encounter Factory repository"
           meta={['My role: product design and full-stack engineering', 'React + TypeScript', 'Express', 'Deterministic MathEngine', 'Local evaluation only']}
@@ -21,32 +21,32 @@ export default function EncounterFactoryPage() {
         <section className="section encounter-overview" aria-labelledby="encounter-overview-title">
           <div className="section-heading">
             <p className="eyebrow">Problem → approach → outcome</p>
-            <h2 id="encounter-overview-title">A structured answer to an unreliable generation problem</h2>
+            <h2 id="encounter-overview-title">Why I split the work into stages</h2>
           </div>
           <div className="case-study-triad">
             <article>
               <span>01</span>
               <h3>Problem</h3>
-              <p>A useful D&D encounter has to combine party capabilities, balance, tactics, terrain, story, and clear instructions. A single unstructured AI response can blur trusted calculations with creative suggestions.</p>
+              <p>A useful encounter needs to fit the players’ characters and give the game master a clear way to run it. One long AI response can mix up the numbers, the tactics, and the story.</p>
             </article>
             <article>
               <span>02</span>
               <h3>Approach</h3>
-              <p>I separated deterministic math and service controls from bounded AI stages, then added typed schemas, mechanical audits, a repair path, and persistent checkpoints.</p>
+              <p>The MathEngine handles the numbers. Separate AI stages work on the setting, tactics, and writing. Schemas and audits check the results, while saved checkpoints let an interrupted job continue.</p>
             </article>
             <article>
               <span>03</span>
               <h3>Outcome</h3>
-              <p>The unfinished system can turn one detailed briefing into a reviewable encounter package with mechanical targets, game-master guidance, and HTML, VTT, and Obsidian-ready exports.</p>
+              <p>The current system can produce an encounter document with mechanical targets, notes for the game master, and HTML, VTT, and Obsidian-ready exports. It still needs testing and editorial review.</p>
             </article>
           </div>
 
           <aside className="why-it-matters" aria-labelledby="why-it-matters-title">
             <div>
               <p className="eyebrow">Why this project matters</p>
-              <h3 id="why-it-matters-title">Creative AI work becomes easier to inspect and recover</h3>
+              <h3 id="why-it-matters-title">The safeguards matter as much as the writing</h3>
             </div>
-            <p>The design makes complex generation more structured, reviewable, recoverable, and reusable across sessions. Its safeguards preserve completed work, keep important calculations visible, and produce practical formats a game master can inspect before using.</p>
+            <p>A game master should be able to see the calculations, pick up where a stopped job left off, and edit the final document. That is why I built checks and saved stages around the AI writing instead of treating one response as the finished answer.</p>
           </aside>
 
           <nav className="encounter-evidence-links" aria-label="Encounter Factory evidence">
@@ -74,8 +74,8 @@ export default function EncounterFactoryPage() {
         <section className="section media-section alt" aria-labelledby="operator-title">
           <div className="section-heading">
             <p className="eyebrow">Behind the form</p>
-            <h2 id="operator-title">Submissions enter a reviewable local queue</h2>
-            <p>A public briefing does not immediately start AI generation. It creates a queued session that a local operator can inspect and claim, keeping intake separate from execution.</p>
+            <h2 id="operator-title">The operator reviews requests before generation</h2>
+            <p>Submitting a briefing does not start AI generation straight away. It puts the request in a queue so a local operator can inspect and claim it first.</p>
           </div>
           <figure className="screenshot-frame">
             <img src="/images/encounter-factory/encounter-builder.png" alt="Encounter Factory local operator console showing the incoming briefing queue" loading="lazy" />
@@ -87,7 +87,7 @@ export default function EncounterFactoryPage() {
           <div className="section-heading">
             <p className="eyebrow">Second workflow</p>
             <h2 id="advisor-title">GM Advisor offers a faster tactical review</h2>
-            <p>The companion workflow reviews the same structured party information and returns concise preparation notes when a full encounter document is not needed.</p>
+            <p>GM Advisor uses the same party information to prepare shorter tactical notes when a full encounter document would be more than the game master needs.</p>
           </div>
           <figure className="screenshot-frame">
             <img src="/images/encounter-factory/gm-advisor.png" alt="GM Advisor interface showing a tactical review generated from fictional party information" loading="lazy" />
@@ -97,19 +97,19 @@ export default function EncounterFactoryPage() {
 
         <section className="section limitation" aria-labelledby="encounter-limit-title">
           <div><p className="eyebrow">Current status</p><h2 id="encounter-limit-title">Useful work in progress, not a finished product</h2></div>
-          <p>Encounter Factory is still being developed and evaluated locally. The repository demonstrates the current interface, data flow, MathEngine, validation, background jobs, recovery, and exports. This portfolio does not run the server, accept real submissions, or present the system as ready for public hosting.</p>
+          <p>Encounter Factory is still being tested locally. The repository shows the interface, MathEngine, validation, background jobs, recovery, and exports. This portfolio does not run the service or accept submissions.</p>
         </section>
 
         <section className="section example-output-section" aria-labelledby="example-output-title">
           <div className="section-heading">
             <p className="eyebrow">Existing HTML export · work in progress</p>
-            <h2 id="example-output-title">A fuller encounter document produced by the system</h2>
-            <p>I found this existing Encounter Factory export saved locally on this computer. Unlike the earlier hand-written repository fixture, it contains a complete styled encounter with scene-setting, tactical zones, calculated targets, enemy statistics, a round-by-round run sheet, and design notes.</p>
+            <h2 id="example-output-title">An encounter document from an earlier test</h2>
+            <p>This saved export shows what the current system can produce: scene-setting, tactical zones, calculated targets, enemy statistics, a round-by-round run sheet, and design notes. It is an actual generated output, not the hand-written test fixture in the repository.</p>
           </div>
 
           <aside className="output-warning" aria-label="Work-in-progress output notice">
             <strong>Work in progress</strong>
-            <p>This is an existing fictional output from the unfinished system, not a promise of final quality or format. It may contain mechanical or editorial issues that still need review.</p>
+            <p>This fictional export is from an unfinished system. The mechanics and writing may still need corrections.</p>
           </aside>
 
           <div className="output-preview-shell">

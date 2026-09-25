@@ -35,14 +35,14 @@ test('project registry describes each project by its actual type', async () => {
   const encounter = projects.find(({ slug }) => slug === 'encounter-factory');
   assert.equal(encounter.label, 'Engineering case study');
   assert.equal(encounter.linkLabel, 'View Encounter Factory case study');
-  assert.match(encounter.summary, /unfinished D&D application/i);
+  assert.match(encounter.summary, /building a D&D tool/i);
   assert.equal(encounter.image, '/images/encounter-factory/briefing-intake.png');
   await fs.access('public/images/encounter-factory/briefing-intake.png');
 
   const characterEstate = projects.find(({ slug }) => slug === 'character-estate-automation');
   assert.equal(characterEstate.label, 'Spreadsheet systems case study');
   assert.equal(characterEstate.linkLabel, 'View Character & Estate case study');
-  assert.match(characterEstate.summary, /private, evidence-reviewed spreadsheet system/i);
+  assert.match(characterEstate.summary, /private workbook/i);
   assert.equal(projects[0].label, 'Data analysis project');
   assert.equal(projects[0].image, '/images/online-retail/monthly-revenue-chart.svg');
   await fs.access('public/images/online-retail/monthly-revenue-chart.svg');
@@ -70,7 +70,7 @@ test('Encounter Factory ends with a clearly qualified existing HTML export', asy
   const page = await fs.readFile('src/pages/EncounterFactoryPage.jsx', 'utf8');
   assert.match(page, /Existing HTML export · work in progress/);
   assert.match(page, /The Sanctum of Shadows/);
-  assert.match(page, /existing fictional output from the unfinished system/);
+  assert.match(page, /fictional export is from an unfinished system/);
   assert.match(page, /examples\/encounter-factory\/the-sanctum-of-shadows\.html/);
 
   const output = await fs.readFile('public/examples/encounter-factory/the-sanctum-of-shadows.html', 'utf8');

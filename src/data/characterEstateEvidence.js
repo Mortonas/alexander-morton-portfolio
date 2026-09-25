@@ -14,38 +14,38 @@ export const characterEstateEvidence = {
 export const caseStudyStages = [
   {
     title: 'Problem',
-    description: 'Character, estate, landholding, resource, follower, and history records must stay consistent across several working views. Manual updates can leave balances mismatched or history incomplete.',
-    signal: 'Requirements thinking and recognition of operational risk.',
+    description: 'Character, estate, landholding, resource, follower, and history records appear in several places. Updating them by hand can leave balances out of step or history unfinished.',
+    signal: 'I identified where manual changes could cause problems.',
   },
   {
     title: 'Data',
-    description: 'Reference lists and controlled inputs feed character, family and follower, stable, landholding, jousting, resource, and historical records.',
-    signal: 'Data modeling and organization of related record types.',
+    description: 'Shared lists supply choices for character, family and follower, stable, landholding, jousting, resource, and history records.',
+    signal: 'I organized related information instead of repeating it across sheets.',
   },
   {
     title: 'Process',
-    description: 'Formulas and lookup rules consolidate records into Tracking, Estate Overview, Front, and Back; reviewed scripts handle the annual posting sequence.',
-    signal: 'Calculation lineage, validation design, and controlled automation.',
+    description: 'Formulas bring those records into Tracking, Estate Overview, Front, and Back. The scripts handle the yearly update.',
+    signal: 'I can explain where the calculated values come from and how updates are applied.',
   },
   {
     title: 'Outcome',
-    description: 'Linked working views, traceable calculations, structured history, and a repeatable annual update process.',
-    signal: 'Design for reliable recurring workflows.',
+    description: 'The workbook gives users linked views, historical records, and a repeatable way to make annual updates.',
+    signal: 'I designed for a task that has to be done more than once.',
   },
 ];
 
 export const interfaceCallouts = [
   {
     title: 'Controlled inputs',
-    description: 'List-backed and numeric controls constrain selected fields before dependent calculations use them.',
+    description: 'Lists and number checks limit what can be entered in fields used by later calculations.',
   },
   {
     title: 'Calculated characteristics',
-    description: 'Formula-driven attributes and skills turn stored inputs and reference values into usable results.',
+    description: 'Formulas combine entered values with reference lists to calculate attributes and skills.',
   },
   {
     title: 'Linked operational records',
-    description: 'Equipment and stable records flow into the main working view without being manually re-entered there.',
+    description: 'Equipment and stable details appear here without having to enter them again.',
   },
   {
     title: 'Current status in one view',
@@ -56,7 +56,7 @@ export const interfaceCallouts = [
 export const systemFlow = [
   {
     title: 'Centralized reference data',
-    purpose: 'Reusable categories and lookup values constrain inputs and support calculations.',
+    purpose: 'One shared list supplies choices and lookup values to other sheets.',
     sources: ['Lists'],
   },
   {
@@ -87,17 +87,17 @@ export const technicalEvidence = [
   {
     title: 'Reusable stable-record logic',
     proof: '14 record blocks',
-    description: 'List-backed selections reuse VLOOKUP and MATCH patterns to derive stable attributes instead of repeating manual rule entry.',
+    description: 'The 14 stable-record blocks use the same VLOOKUP and MATCH pattern to calculate attributes from selected values.',
   },
   {
     title: 'Dedicated rules layer',
     proof: '254 Tracking formulas',
-    description: 'Conditional checks and reference lookups centralize derived values that support the working views.',
+    description: 'Tracking uses conditions and reference lookups to calculate values shown elsewhere in the workbook.',
   },
   {
     title: 'Explicit outcome rules',
     proof: '15 of 16 pairs mapped',
-    description: 'Two validated four-value selectors create a 4×4 outcome space. The reviewed formula explicitly maps 15 pairs; completing the uncovered pair is a documented next step.',
+    description: 'Two four-choice inputs make 16 possible outcomes. The reviewed formula covers 15 of them; I have listed the missing pair as work to do.',
   },
   {
     title: 'Consolidated estate model',

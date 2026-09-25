@@ -40,7 +40,7 @@ test('Problem Data Process Outcome cards name records and expose clear skill sig
   assert.deepEqual(caseStudyStages.map(({ title }) => title), ['Problem', 'Data', 'Process', 'Outcome']);
   const copy = caseStudyStages.map(({ description, signal }) => `${description} ${signal}`).join(' ');
   for (const record of ['character', 'estate', 'landholding', 'resource', 'follower', 'history']) assert.match(copy, new RegExp(record, 'i'));
-  for (const signal of ['requirements thinking', 'data modeling', 'calculation lineage', 'reliable recurring workflows']) assert.match(copy, new RegExp(signal, 'i'));
+  for (const signal of ['manual changes could cause problems', 'organized related information', 'calculated values come from', 'task that has to be done more than once']) assert.match(copy, new RegExp(signal, 'i'));
 });
 
 test('system flow and relationships preserve the workbook presentation mapping', () => {
@@ -62,20 +62,20 @@ test('page contains seven focused sections and the requested analyst framing', a
   assert.equal((evidence.match(/<section\b/g) || []).length, 2);
   assert.match(page, /Problem · Data · Process · Outcome/);
   assert.match(page, /<strong>What this shows<\/strong>/);
-  assert.match(page, /Excel or Google Sheets before results are surfaced through SQL or BI dashboards/);
+  assert.match(page, /reporting moves into SQL or a BI dashboard/);
   assert.equal(interfaceCallouts.length, 4);
-  assert.match(page, /Front sheet combines the current character record/i);
-  assert.match(page, /Comments and embedded artwork are omitted/);
-  assert.match(page, /private workbook is not downloadable/);
+  assert.match(page, /Front sheet is the main working view/i);
+  assert.match(page, /removed comments, embedded artwork, and file metadata/);
+  assert.match(page, /workbook itself is not available for download/);
 });
 
 test('technical depth translates formula behavior without claiming a migration', async () => {
   const component = await fs.readFile('src/components/CharacterEstateEvidence.jsx', 'utf8');
-  assert.match(component, /lookup patterns map naturally to joins/i);
-  assert.match(component, /SQL <code>CASE<\/code> logic or BI calculated columns/);
-  assert.match(component, /has not been presented as a SQL or BI implementation/);
-  assert.match(technicalEvidence[2].description, /explicitly maps 15 pairs/i);
-  assert.match(technicalEvidence[2].description, /uncovered pair is a documented next step/i);
+  assert.match(component, /lookups resemble joins/i);
+  assert.match(component, /SQL <code>CASE<\/code> logic/);
+  assert.match(component, /not a claim that I rebuilt this project in SQL or BI/);
+  assert.match(technicalEvidence[2].description, /covers 15 of them/i);
+  assert.match(technicalEvidence[2].description, /missing pair as work to do/i);
 });
 
 test('annual workflow follows reviewed sequence and remains documentation-only', async () => {
@@ -89,7 +89,7 @@ test('annual workflow follows reviewed sequence and remains documentation-only',
   ]);
   assert.deepEqual(automationSafeguards, ['Explicit worksheet names', 'Required-sheet errors', 'Numeric normalization', 'Fixed resource-to-target mapping']);
   const page = await fs.readFile('src/pages/CharacterEstatePage.jsx', 'utf8');
-  assert.match(page, /does not execute the private scripts/i);
+  assert.match(page, /does not run them/i);
 });
 
 test('architecture is semantic and CSS never changes the sequence', async () => {
@@ -122,8 +122,8 @@ test('only Front and Estate Overview workbook derivatives are referenced and pub
 test('reflection labels reliability upgrades as proposed and preserves limitations', async () => {
   assert.deepEqual(reliabilityUpgrades.map(({ title }) => title), ['Transaction journal and rollback', 'Staging scenarios', 'Tests and lineage documentation']);
   const page = await fs.readFile('src/pages/CharacterEstatePage.jsx', 'utf8');
-  assert.match(page, /proposed upgrades, not current capabilities/i);
-  assert.match(page, /reliability and auditability/i);
+  assert.match(page, /plans, not features already in the workbook/i);
+  assert.match(page, /easier to check and reverse/i);
   assert.match(page, /not a runnable spreadsheet demo/i);
-  assert.match(page, /not measured business impact, adoption, or time savings/i);
+  assert.match(page, /do not measure its accuracy, use by others, or time saved/i);
 });

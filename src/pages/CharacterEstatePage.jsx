@@ -17,7 +17,7 @@ export default function CharacterEstatePage() {
           eyebrow="Spreadsheet systems case study"
           title="Character & Estate Automation"
           subtitle="Linked records, controlled inputs, and repeatable annual updates"
-          lede="I designed the workbook architecture, formula logic, validation rules, and Apps Script workflows behind this private, evidence-reviewed system."
+          lede="I built this workbook to keep character and estate records connected. I designed the sheets, formulas, input checks, and Apps Script updates. The source stays private, but the examples below come from the reviewed workbook and scripts."
           meta={[
             '10 operational worksheets + 1 overview',
             '974 formula cells',
@@ -29,7 +29,7 @@ export default function CharacterEstatePage() {
         <section className="section case-study-overview" aria-labelledby="case-study-title">
           <div className="section-heading">
             <p className="eyebrow">Problem · Data · Process · Outcome</p>
-            <h2 id="case-study-title">A structured system for records that must stay in agreement</h2>
+            <h2 id="case-study-title">Keeping related records in step</h2>
           </div>
           <ol className="case-study-grid">
             {caseStudyStages.map((item, index) => (
@@ -43,14 +43,14 @@ export default function CharacterEstatePage() {
               </li>
             ))}
           </ol>
-          <p className="transfer-note">The same modeling, validation, lineage, and automation concepts apply in Excel or Google Sheets before results are surfaced through SQL or BI dashboards.</p>
+          <p className="transfer-note">This is spreadsheet work, but the same ideas—related records, input checks, and traceable calculations—also matter when reporting moves into SQL or a BI dashboard. I have not migrated this workbook to either one.</p>
         </section>
 
         <section className="section primary-interface" aria-labelledby="interface-title">
           <div className="section-heading">
             <p className="eyebrow">Primary interface</p>
-            <h2 id="interface-title">One working view brings inputs and calculated results together</h2>
-            <p>The Front sheet combines the current character record with derived attributes, linked equipment, stable details, resources, and status information.</p>
+            <h2 id="interface-title">The Front sheet is the main working view</h2>
+            <p>It puts the character record beside calculated attributes, equipment, stable details, resources, and current status.</p>
           </div>
           <div className="interface-layout">
             <figure className="interface-figure">
@@ -68,7 +68,7 @@ export default function CharacterEstatePage() {
               ))}
             </ol>
           </div>
-          <p className="publication-note"><strong>Publication note:</strong> This is a flattened, metadata-free render of an approved worksheet range. Comments and embedded artwork are omitted, and the private workbook is not downloadable.</p>
+          <p className="publication-note"><strong>About the image:</strong> This is a flattened image of a reviewed part of the sheet. I removed comments, embedded artwork, and file metadata. The workbook itself is not available for download.</p>
         </section>
 
         <CharacterEstateEvidence />
@@ -76,9 +76,9 @@ export default function CharacterEstatePage() {
         <section className="section annual-workflow" aria-labelledby="annual-title">
           <div className="annual-intro">
             <p className="eyebrow">Annual posting workflow</p>
-            <h2 id="annual-title">Calculation and automation meet in one controlled sequence</h2>
-            <p>Landholding records feed the estate calculation view. The reviewed script then advances the stored period, synchronizes annual values, posts one selected resource transaction, and resets its entry fields.</p>
-            <p className="documentation-boundary">The portfolio documents this behavior from reviewed source evidence; it does not execute the private scripts.</p>
+            <h2 id="annual-title">From estate totals to an annual update</h2>
+            <p>The landholding sheets feed the estate totals. The script advances the year, updates the annual values, posts a transaction to the chosen resource, and clears the entry fields for next time.</p>
+            <p className="documentation-boundary">I checked this sequence against the private scripts. The portfolio shows how they work; it does not run them.</p>
           </div>
           <div className="annual-layout">
             <figure className="screenshot-frame workbook">
@@ -98,8 +98,8 @@ export default function CharacterEstatePage() {
         <section className="section reflection-section" aria-labelledby="reflection-title">
           <div className="reflection-copy">
             <p className="eyebrow">Reflection and evidence boundary</p>
-            <h2 id="reflection-title">Next steps focus on reliability and auditability</h2>
-            <p>These are proposed upgrades, not current capabilities or assumptions about production use.</p>
+            <h2 id="reflection-title">What I would improve next</h2>
+            <p>These would make updates easier to check and reverse. They are plans, not features already in the workbook.</p>
             <ul className="upgrade-list">
               {reliabilityUpgrades.map((item) => <li key={item.title}><strong>{item.title}</strong><span>{item.description}</span></li>)}
             </ul>
@@ -107,7 +107,7 @@ export default function CharacterEstatePage() {
           <aside className="boundary-panel" aria-labelledby="boundary-title">
             <h3 id="boundary-title">What remains private</h3>
             <p>The reviewed <code>.xlsx</code> export does not contain Apps Script, and this page is not a runnable spreadsheet demo. Script behavior was reviewed from two separate cleaned source files.</p>
-            <p>The workbook and scripts remain private because they contain comments, artwork, and unrelated material. Structural counts describe scope, not measured business impact, adoption, or time savings.</p>
+            <p>The workbook and scripts contain comments, artwork, and unrelated material, so I have kept them private. The counts above show the size of the system; they do not measure its accuracy, use by others, or time saved.</p>
           </aside>
         </section>
       </main>

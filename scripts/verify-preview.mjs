@@ -40,12 +40,19 @@ try {
   if (!physical.ok || !physicalHtml.includes('<title>Traveller Notes | Alexander Morton</title>')) {
     throw new Error('Traveller Notes physical index did not serve its project document');
   }
-  for (const asset of ['/data/dashboard-v1.json', '/data/dashboard-v1.sha256', '/data/dashboard-v1.schema.json', '/artifacts/online-retail-case-study.xlsx']) {
+  const assets = [
+    '/data/dashboard-v1.json', '/data/dashboard-v1.sha256', '/data/dashboard-v1.schema.json',
+    '/artifacts/online-retail-case-study.xlsx',
+    '/images/traveller-notes/fictional-workflow.svg',
+    '/images/traveller-notes/idle-menu.webp',
+    '/images/traveller-notes/new-trade-route-note.webp',
+  ];
+  for (const asset of assets) {
     const response = await fetch(`${base}${asset}`);
     const bytes = await response.arrayBuffer();
     if (!response.ok || bytes.byteLength === 0) throw new Error(`asset request failed for ${asset}`);
   }
-  console.log(`verified ${routes.length} canonical documents and 4 root-absolute evidence assets`);
+  console.log(`verified ${routes.length} canonical documents and ${assets.length} root-absolute evidence assets`);
 } finally {
   child.kill();
 }

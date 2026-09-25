@@ -31,9 +31,9 @@ export default function EncounterWorkflow() {
       <div className="workflow-heading">
         <div>
           <p className="eyebrow">System workflow</p>
-          <h2 id="workflow-title">One briefing, ten stages, one reviewable document</h2>
+          <h2 id="workflow-title">How one briefing becomes an encounter document</h2>
         </div>
-        <p>The diagram follows the current Encounter Factory pipeline from a claimed briefing through mechanical grounding, bounded generation, audit, recovery, and export.</p>
+        <p>Here is how a submitted briefing becomes a document. The numbered stages show where the system checks the math, writes material, saves progress, and prepares the export.</p>
       </div>
 
       <aside className="workflow-legend-panel" aria-labelledby="workflow-legend-title">
@@ -93,7 +93,7 @@ export default function EncounterWorkflow() {
         <div>
           <p className="eyebrow">Reliability controls</p>
           <h3 id="workflow-safeguards-title">Safeguards and control paths</h3>
-          <p>These statements document the service’s current orchestration behavior. The portfolio explains them but does not run or integration-test the Encounter Factory service.</p>
+          <p>These safeguards are documented from the application code. This portfolio page explains them; it does not run or test the service itself.</p>
         </div>
         <ul>
           {workflowSafeguards.map((safeguard) => (
@@ -105,7 +105,7 @@ export default function EncounterWorkflow() {
       <div className="workflow-outcome">
         <div><span>Input</span><strong>Structured party briefing</strong></div>
         <span className="workflow-outcome-arrow" aria-hidden="true">→</span>
-        <div><span>Outcome</span><strong>Styled, reviewable encounter package</strong></div>
+        <div><span>Outcome</span><strong>Encounter document ready for the game master to review</strong></div>
         <a className="button primary" href="#example-output-title">View the generated encounter document</a>
       </div>
 

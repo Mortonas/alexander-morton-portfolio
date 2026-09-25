@@ -21,8 +21,8 @@ export default function CharacterEstateEvidence() {
       <section className="section workbook-system-section" aria-labelledby="workbook-system-title">
         <div className="section-heading">
           <p className="eyebrow">System architecture</p>
-          <h2 id="workbook-system-title">Records move through four defined layers</h2>
-          <p>Reference data constrains inputs, operational sheets capture records, calculation sheets derive results, and the final layer presents or posts those results.</p>
+          <h2 id="workbook-system-title">How the sheets connect</h2>
+          <p>Lists supply shared choices. Other sheets hold the records, calculate results, and show the current view or post an annual update.</p>
         </div>
 
         <ol className="system-flow" aria-label="Workbook system flow">
@@ -52,8 +52,8 @@ export default function CharacterEstateEvidence() {
       <section className="section technical-section" aria-labelledby="technical-title">
         <div className="section-heading technical-heading">
           <p className="eyebrow">Technical depth</p>
-          <h2 id="technical-title">The formulas implement reusable rules, not isolated totals</h2>
-          <p>The workbook contains {characterEstateEvidence.formulaCells.toLocaleString('en-US')} formula cells. That count describes scale; the patterns below show what the calculation layer actually does.</p>
+          <h2 id="technical-title">What the formulas actually do</h2>
+          <p>The workbook has {characterEstateEvidence.formulaCells.toLocaleString('en-US')} formula cells. The number shows its size, but the more useful question is what those formulas connect and calculate.</p>
         </div>
 
         <div className="technical-evidence-grid">
@@ -69,14 +69,14 @@ export default function CharacterEstateEvidence() {
         <div className="validation-bridge">
           <div>
             <h3>Input controls used in the model</h3>
-            <p>{characterEstateEvidence.validationObjects} validation objects cover representative categorical, numeric, outcome, and resource inputs.</p>
+            <p>The workbook has {characterEstateEvidence.validationObjects} validation rules, including checks for choices, numbers, outcomes, and resource types.</p>
           </div>
           <ul aria-label="Validation examples">
             {validationEvidence.map((item) => <li key={item}>{item}</li>)}
           </ul>
         </div>
 
-        <p className="analytics-bridge"><strong>How this transfers:</strong> lookup patterns map naturally to joins, conditional formulas to SQL <code>CASE</code> logic or BI calculated columns, and an outcome matrix to a maintained business-rules table. This project demonstrates the concepts; it has not been presented as a SQL or BI implementation.</p>
+        <p className="analytics-bridge"><strong>In analyst terms:</strong> lookups resemble joins; conditional formulas resemble SQL <code>CASE</code> logic; and the outcome matrix could become a business-rules table. That is a comparison, not a claim that I rebuilt this project in SQL or BI.</p>
       </section>
     </>
   );

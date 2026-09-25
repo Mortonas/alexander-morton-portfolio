@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { gzipSync } from 'node:zlib';
-import { verifyTravellerPrivacy } from './verify-traveller-privacy.mjs';
+import { approvedTravellerImages, verifyTravellerPrivacy, webpMetadataChunks } from './verify-traveller-privacy.mjs';
 
 const origin = (process.env.VITE_SITE_ORIGIN || process.env.URL || '').replace(/\/$/, '');
 if (!origin) throw new Error('VITE_SITE_ORIGIN is required locally; Netlify supplies URL automatically.');
@@ -38,6 +38,11 @@ async function walk(directory) {
 const files = await walk('dist');
 const normalized = files.map((file) => file.replaceAll('\\', '/'));
 verifyTravellerPrivacy(normalized);
+for (const image of approvedTravellerImages.filter((file) => file.endsWith('.webp'))) {
+  const file = path.join('dist', image);
+  const metadata = webpMetadataChunks(await fs.readFile(file));
+  if (metadata.length) throw new Error(`metadata chunk found in ${file}: ${metadata.join(', ')}`);
+}
 const allowedWorkbook = 'dist/artifacts/online-retail-case-study.xlsx';
 for (const file of normalized) {
   const lower = file.toLowerCase();

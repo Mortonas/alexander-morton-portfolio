@@ -10,27 +10,27 @@ export const workflowLegend = [
   {
     id: 'deterministic',
     label: 'Deterministic code',
-    description: 'Owns calculations, queue state, schemas, simulations, and export rules.',
+    description: 'Handles the calculations, queue, data checks, simulations, and export rules.',
   },
   {
     id: 'ai',
     label: 'Bounded AI',
-    description: 'Creates structured material inside validated inputs and mechanical targets.',
+    description: 'Drafts material using checked inputs and mechanical targets.',
   },
   {
     id: 'validation',
     label: 'Validation',
-    description: 'Checks shape, consistency, simulation warnings, and audit feedback.',
+    description: 'Checks whether stage outputs fit the expected structure and agree with the rules.',
   },
   {
     id: 'persistence',
     label: 'Persistence',
-    description: 'Checkpoints completed work so interrupted jobs can resume safely.',
+    description: 'Saves completed stages so an interrupted job can continue.',
   },
   {
     id: 'export',
     label: 'Export',
-    description: 'Packages validated state as HTML, VTT, and Obsidian-ready output.',
+    description: 'Creates HTML, VTT, and Obsidian-ready files from the checked result.',
   },
 ];
 

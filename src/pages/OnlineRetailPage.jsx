@@ -24,11 +24,11 @@ export default function OnlineRetailPage() {
           eyebrow="Data analyst case study"
           title="Online Retail Performance Analysis"
           subtitle="Python · SQL · SQLite · Excel · React"
-          lede="How did sales, cancellations, product mix, geography, and customer frequency shape realized revenue from December 2010 through December 2011?"
+          lede="I used the UCI Online Retail dataset to ask where revenue came from, how cancellations affected it, and which customers bought most often. The records cover December 2010 to 9 December 2011."
           repositoryUrl="https://github.com/Mortonas/online-retail-performance-analysis"
           meta={['541,909 source rows', 'GBP', 'UCI Online Retail', 'CC BY 4.0']}
         />
-        {state.status === 'loading' && <section className="status compact" aria-live="polite">Loading the validated case study…</section>}
+        {state.status === 'loading' && <section className="status compact" aria-live="polite">Checking and loading the retail data…</section>}
         {state.status === 'error' && (
           <section className="status compact error" role="alert">
             <h2>Dashboard data could not be loaded</h2>
