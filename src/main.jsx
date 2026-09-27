@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/site.css';
+import './styles/project-downloads.css';
 
 const pageLoaders = {
   home: () => import('./pages/HomePage.jsx'),

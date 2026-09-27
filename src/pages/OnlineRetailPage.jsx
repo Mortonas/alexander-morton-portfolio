@@ -26,6 +26,10 @@ export default function OnlineRetailPage() {
           subtitle="Python · SQL · SQLite · Excel · React"
           lede="I used the UCI Online Retail dataset to ask where revenue came from, how cancellations affected it, and which customers bought most often. The records cover December 2010 to 9 December 2011."
           repositoryUrl="https://github.com/Mortonas/online-retail-performance-analysis"
+          downloads={[
+            { url: 'https://github.com/Mortonas/online-retail-performance-analysis/archive/refs/heads/main.zip', label: 'Download source ZIP' },
+            { url: '/artifacts/online-retail-case-study.xlsx', label: 'Download Excel report', download: true },
+          ]}
           meta={['541,909 source rows', 'GBP', 'UCI Online Retail', 'CC BY 4.0']}
         />
         {state.status === 'loading' && <section className="status compact" aria-live="polite">Checking and loading the retail data…</section>}

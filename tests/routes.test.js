@@ -40,9 +40,17 @@ test('project registry describes each project by its actual type', async () => {
   await fs.access('public/images/encounter-factory/briefing-intake.png');
 
   const characterEstate = projects.find(({ slug }) => slug === 'character-estate-automation');
-  assert.equal(characterEstate.label, 'Spreadsheet systems case study');
+  assert.equal(characterEstate.label, 'Estate management spreadsheet');
   assert.equal(characterEstate.linkLabel, 'View Character & Estate case study');
-  assert.match(characterEstate.summary, /private workbook/i);
+  assert.match(characterEstate.summary, /two property schedules feed one combined estate view/i);
+  assert.equal(characterEstate.sourceDownloadUrl, null);
+  assert.equal(characterEstate.demoUrl, 'https://docs.google.com/spreadsheets/d/1ccwO0CRXp3GgIX9eK9knxABlp-jBSh0P1N40G5VaaWo/edit?usp=sharing');
+  assert.equal(characterEstate.demoLinkLabel, 'Try the workbook in Google Sheets');
+  for (const project of projects.filter(({ repositoryUrl }) => repositoryUrl)) {
+    assert.match(project.sourceDownloadUrl, new RegExp(`${project.repositoryUrl}/archive/refs/heads/main\\.zip`));
+  }
+  assert.equal(projects.filter(({ sourceDownloadUrl }) => sourceDownloadUrl).length, 3);
+  assert.ok(projects.every(({ sourceDownloadUrl, downloadNote, demoUrl }) => sourceDownloadUrl || downloadNote || demoUrl));
   assert.equal(projects[0].label, 'Data analysis project');
   assert.equal(projects[0].image, '/images/online-retail/monthly-revenue-chart.svg');
   await fs.access('public/images/online-retail/monthly-revenue-chart.svg');

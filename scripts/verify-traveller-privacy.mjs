@@ -1,9 +1,12 @@
 import { execFileSync } from 'node:child_process';
 
 export const approvedTravellerImages = [
-  'images/traveller-notes/fictional-workflow.svg',
   'images/traveller-notes/idle-menu.webp',
-  'images/traveller-notes/new-trade-route-note.webp',
+  'images/traveller-notes/captain-eva-rostova-note.webp',
+  'images/traveller-notes/regina-master-note.webp',
+  'images/traveller-notes/regina-starport-note.webp',
+  'images/traveller-notes/regina-system-authority-note.webp',
+  'images/traveller-notes/vargr-infiltration-note.webp',
 ];
 const approvedImageSet = new Set(approvedTravellerImages);
 const approvedJson = new Set(['data/dashboard-v1.json', 'data/dashboard-v1.schema.json']);
@@ -58,6 +61,19 @@ export function webpMetadataChunks(bytes) {
     if (['EXIF', 'XMP ', 'ICCP'].includes(type)) found.push(type);
   }
   return found;
+}
+
+export function travellerPrivateContentViolations(textFiles) {
+  const markers = [
+    /test_output/i,
+    /regina-showcase-(?:map\.json|provenance\.md)/i,
+    /(?:[a-z]:\\(?:users|projects)\\|[a-z]:\/(?:users|projects)\/)/i,
+    /(?:^|\n)origin_url\s*:/i,
+    /(?:^|\n)processed_(?:ledgers|splinters)\s*:/i,
+    /(?:^|\n)type:\s*master_ledger\b/i,
+    /OPENROUTER_API_KEY\s*=/i,
+  ];
+  return textFiles.flatMap(({ path, contents }) => markers.some((marker) => marker.test(contents)) ? [path] : []);
 }
 
 export function verifyTravellerPrivacy(builtFiles) {

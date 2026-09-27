@@ -1,83 +1,66 @@
 import {
+  calculationLineage,
   characterEstateEvidence,
-  recordRelationships,
-  systemFlow,
-  technicalEvidence,
-  validationEvidence,
+  dataOrigins,
+  estateFlow,
 } from '../data/characterEstateEvidence.js';
 import '../styles/character-estate.css';
 
-function formatRelationship(text) {
-  return text.split(/(`[^`]+`)/).map((part, index) => (
-    part.startsWith('`') && part.endsWith('`')
-      ? <code key={`${part}-${index}`}>{part.slice(1, -1)}</code>
-      : part
-  ));
-}
-
 export default function CharacterEstateEvidence() {
   return (
-    <>
-      <section className="section workbook-system-section" aria-labelledby="workbook-system-title">
-        <div className="section-heading">
-          <p className="eyebrow">System architecture</p>
-          <h2 id="workbook-system-title">How the sheets connect</h2>
-          <p>Lists supply shared choices. Other sheets hold the records, calculate results, and show the current view or post an annual update.</p>
+    <section className="section estate-model-section" aria-labelledby="estate-model-title">
+      <div className="section-heading">
+        <p className="eyebrow">The data model</p>
+        <h2 id="estate-model-title">From property records to one estate view</h2>
+        <p>A landholding is a property. The workbook gives each of two properties its own schedule, then brings selected results into a combined estate view.</p>
+      </div>
+
+      <ol className="estate-flow" aria-label="How property information moves through the workbook">
+        {estateFlow.map((stage, index) => (
+          <li key={stage.title}>
+            <article>
+              <span className="estate-flow-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+              <h3>{stage.title}</h3>
+              <p>{stage.description}</p>
+              <p className="estate-flow-output"><strong>Result:</strong> {stage.output}</p>
+            </article>
+          </li>
+        ))}
+      </ol>
+
+      <div className="lineage-section">
+        <div className="lineage-heading">
+          <p className="eyebrow">Calculation lineage</p>
+          <h3>Follow a value from entry to result</h3>
+          <p>These examples show where the workbook gets a value and where its formulas carry it next.</p>
         </div>
-
-        <ol className="system-flow" aria-label="Workbook system flow">
-          {systemFlow.map((stage, index) => (
-            <li className="system-stage" key={stage.title}>
-              <article>
-                <span className="stage-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
-                <h3>{stage.title}</h3>
-                <p>{stage.purpose}</p>
-                <ul aria-label={`${stage.title} sources`}>
-                  {stage.sources.map((source) => <li key={source}><code>{source}</code></li>)}
-                </ul>
-              </article>
-              {index < systemFlow.length - 1 && <span className="stage-connector" aria-hidden="true">→</span>}
-            </li>
-          ))}
-        </ol>
-
-        <aside className="relationship-summary" aria-labelledby="relationship-summary-title">
-          <h3 id="relationship-summary-title">How the records connect</h3>
-          <ul>
-            {recordRelationships.map((relationship) => <li key={relationship}>{formatRelationship(relationship)}</li>)}
-          </ul>
-        </aside>
-      </section>
-
-      <section className="section technical-section" aria-labelledby="technical-title">
-        <div className="section-heading technical-heading">
-          <p className="eyebrow">Technical depth</p>
-          <h2 id="technical-title">What the formulas actually do</h2>
-          <p>The workbook has {characterEstateEvidence.formulaCells.toLocaleString('en-US')} formula cells. The number shows its size, but the more useful question is what those formulas connect and calculate.</p>
-        </div>
-
-        <div className="technical-evidence-grid">
-          {technicalEvidence.map((item) => (
-            <article key={item.title}>
-              <span>{item.proof}</span>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
+        <div className="lineage-grid">
+          {calculationLineage.map((example) => (
+            <article key={example.title}>
+              <h4>{example.title}</h4>
+              <ol>{example.steps.map((step) => <li key={step}>{step}</li>)}</ol>
             </article>
           ))}
         </div>
+        <p className="reconciliation-note"><strong>Comparing totals:</strong> The estate view provides a combined result that can be compared with property-level values. The workbook does not implement a separate automated reconciliation check. Directly held and vassal values stay in separate columns; miscellaneous income and additional expenses can be entered at estate level.</p>
+      </div>
 
-        <div className="validation-bridge">
-          <div>
-            <h3>Input controls used in the model</h3>
-            <p>The workbook has {characterEstateEvidence.validationObjects} validation rules, including checks for choices, numbers, outcomes, and resource types.</p>
-          </div>
-          <ul aria-label="Validation examples">
-            {validationEvidence.map((item) => <li key={item}>{item}</li>)}
-          </ul>
+      <section className="data-origin-section" aria-labelledby="data-origin-title">
+        <div>
+          <p className="eyebrow">Where each value comes from</p>
+          <h3 id="data-origin-title">Four kinds of workbook data</h3>
         </div>
-
-        <p className="analytics-bridge"><strong>In analyst terms:</strong> lookups resemble joins; conditional formulas resemble SQL <code>CASE</code> logic; and the outcome matrix could become a business-rules table. That is a comparison, not a claim that I rebuilt this project in SQL or BI.</p>
+        <dl className="data-origin-grid">
+          {dataOrigins.map((item) => (
+            <div key={item.label}>
+              <dt>{item.label}</dt>
+              <dd>{item.description}</dd>
+            </div>
+          ))}
+        </dl>
       </section>
-    </>
+
+      <p className="scope-note">Across the full workbook, the audited structure is {characterEstateEvidence.operationalWorksheets} working sheets plus one overview, {characterEstateEvidence.formulaCells.toLocaleString('en-US')} formula cells, and {characterEstateEvidence.validationObjects} validation objects. Those counts describe scope; they do not prove calculation quality.</p>
+    </section>
   );
 }

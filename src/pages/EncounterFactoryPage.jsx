@@ -15,6 +15,10 @@ export default function EncounterFactoryPage() {
           lede="I am building Encounter Factory for the people who run Dungeons & Dragons games. They describe the players' characters and the kind of scene they want. The application checks the encounter math, then uses AI to help draft a document they can review and run at the table. It is still in development."
           repositoryUrl="https://github.com/Mortonas/Encounter-Factory"
           repositoryLabel="View Encounter Factory repository"
+          downloads={[
+            { url: 'https://github.com/Mortonas/Encounter-Factory/archive/refs/heads/main.zip', label: 'Download source ZIP' },
+            { url: '/examples/encounter-factory/the-sanctum-of-shadows.html', label: 'Download generated example (HTML)', download: true },
+          ]}
           meta={['My role: product design and full-stack engineering', 'React + TypeScript', 'Express', 'Deterministic MathEngine', 'Local evaluation only']}
         />
 

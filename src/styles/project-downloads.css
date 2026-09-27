@@ -1,0 +1,47 @@
+.project-card-download {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  margin-top: 1rem;
+  padding: .65rem .85rem;
+  border: 1px solid var(--navy);
+  border-radius: .35rem;
+  background: var(--navy);
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.project-card-download:hover {
+  border-color: var(--teal);
+  background: var(--teal);
+  color: #fff;
+}
+
+.project-card-download-note,
+.project-download-note {
+  color: var(--muted);
+  font-size: .86rem;
+}
+
+.project-card-download-note {
+  margin: .8rem 0 0;
+  padding: .7rem .85rem;
+  border-left: 3px solid var(--orange);
+  background: #fff;
+}
+
+.project-download-note {
+  flex-basis: 100%;
+  margin: 0;
+}
+
+.estate-full-figure {
+  grid-column: 1 / -1;
+}
+
+.estate-full-figure img {
+  width: 100%;
+  height: auto;
+  max-height: none;
+}

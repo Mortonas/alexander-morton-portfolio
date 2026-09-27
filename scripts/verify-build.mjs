@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { gzipSync } from 'node:zlib';
-import { approvedTravellerImages, verifyTravellerPrivacy, webpMetadataChunks } from './verify-traveller-privacy.mjs';
+import { approvedTravellerImages, verifyTravellerPrivacy, webpMetadataChunks, travellerPrivateContentViolations } from './verify-traveller-privacy.mjs';
 
 const origin = (process.env.VITE_SITE_ORIGIN || process.env.URL || '').replace(/\/$/, '');
 if (!origin) throw new Error('VITE_SITE_ORIGIN is required locally; Netlify supplies URL automatically.');
@@ -38,6 +38,10 @@ async function walk(directory) {
 const files = await walk('dist');
 const normalized = files.map((file) => file.replaceAll('\\', '/'));
 verifyTravellerPrivacy(normalized);
+const publishedText = await Promise.all(normalized.filter((file) => /\.(?:html|js|css|json|svg|txt|md)$/i.test(file))
+  .map(async (file) => ({ path: file, contents: await fs.readFile(file, 'utf8') })));
+const privateContent = travellerPrivateContentViolations(publishedText);
+if (privateContent.length) throw new Error(`Traveller private content marker reached build: ${privateContent.join(', ')}`);
 for (const image of approvedTravellerImages.filter((file) => file.endsWith('.webp'))) {
   const file = path.join('dist', image);
   const metadata = webpMetadataChunks(await fs.readFile(file));
@@ -52,17 +56,21 @@ for (const file of normalized) {
   if (lower.includes('release-audit') || lower.includes('evidence-map') || lower.includes('release-verification')) throw new Error(`internal evidence file reached build: ${file}`);
 }
 
-const approvedCharacterImages = [
+const allowedCharacterImages = [
   'dist/images/character-estate/estate-overview.webp',
+  'dist/images/character-estate/estate-overview-full.webp',
   'dist/images/character-estate/front-sheet.webp',
+  'dist/images/character-estate/landholding-finances.webp',
+  'dist/images/character-estate/landholding-improvements.webp',
 ];
 const builtCharacterImages = normalized.filter((file) => file.startsWith('dist/images/character-estate/')).sort();
-if (JSON.stringify(builtCharacterImages) !== JSON.stringify([...approvedCharacterImages].sort())) {
+if (JSON.stringify(builtCharacterImages) !== JSON.stringify([...allowedCharacterImages].sort())) {
   throw new Error(`unapproved character workbook image set: ${builtCharacterImages.join(', ')}`);
 }
-for (const image of approvedCharacterImages) {
+for (const image of allowedCharacterImages) {
   const bytes = await fs.readFile(image);
-  if (bytes.includes(Buffer.from('EXIF')) || bytes.includes(Buffer.from('XMP '))) throw new Error(`metadata chunk found in ${image}`);
+  const metadata = webpMetadataChunks(bytes);
+  if (metadata.length) throw new Error(`metadata chunk found in ${image}: ${metadata.join(', ')}`);
 }
 
 const encounterExportPath = 'dist/examples/encounter-factory/the-sanctum-of-shadows.html';

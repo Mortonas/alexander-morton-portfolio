@@ -43,9 +43,13 @@ try {
   const assets = [
     '/data/dashboard-v1.json', '/data/dashboard-v1.sha256', '/data/dashboard-v1.schema.json',
     '/artifacts/online-retail-case-study.xlsx',
-    '/images/traveller-notes/fictional-workflow.svg',
+    '/images/character-estate/estate-overview-full.webp',
     '/images/traveller-notes/idle-menu.webp',
-    '/images/traveller-notes/new-trade-route-note.webp',
+    '/images/traveller-notes/captain-eva-rostova-note.webp',
+    '/images/traveller-notes/regina-master-note.webp',
+    '/images/traveller-notes/regina-starport-note.webp',
+    '/images/traveller-notes/regina-system-authority-note.webp',
+    '/images/traveller-notes/vargr-infiltration-note.webp',
   ];
   for (const asset of assets) {
     const response = await fetch(`${base}${asset}`);
