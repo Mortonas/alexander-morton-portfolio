@@ -40,7 +40,7 @@ Traveller Notes is served from `/projects/traveller-notes/` by a physical `proje
 - Online Retail calculations remain owned by [online-retail-performance-analysis](https://github.com/Mortonas/online-retail-performance-analysis).
 - Encounter Factory remains a local evaluation project and is not run by this site.
 - The original character workbook and Apps Script sources are not committed or copied into `dist`. The Character & Estate project links to Alexander's shared Google Sheet so visitors can explore the workbook; the page asks them to make their own copy before testing changes. The working-tree image allowlist is `front-sheet.webp`, `estate-overview.webp`, `estate-overview-full.webp`, `landholding-improvements.webp`, and `landholding-finances.webp`. The full-sheet image and new landholding crops remain subject to Alexander's privacy and legibility review before publication. All image derivatives must be flattened WebP files with metadata stripped. Public code projects link to a source ZIP near the top of both the project card and project page.
-- Missing résumé, LinkedIn, and contact links remain hidden instead of using placeholders.
+- The data-analytics portfolio serves only `public/resume/Alexander_Morton_Google_Data_Analytics_Resume_Revised.docx` as its employer résumé download. Keep the separate AI résumé on the AI portfolio; never substitute one for the other.
 
 ## Traveller Notes release checklist
 

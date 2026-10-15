@@ -1,4 +1,4 @@
-import { ArrowRight, Github } from 'lucide-react';
+import { ArrowRight, Download, Github } from 'lucide-react';
 import ProjectCard from '../components/ProjectCard.jsx';
 import SiteLayout from '../components/SiteLayout.jsx';
 import { projects } from '../data/projects.js';
@@ -14,6 +14,7 @@ export default function HomePage() {
           <p className="lede">I use Python, SQL, and spreadsheets to organize data, check the numbers, and explain what they mean. I also build tools that turn those results into something people can work with.</p>
           <div className="actions">
             <a className="button primary" href="#work">View selected work <ArrowRight size={16} aria-hidden="true" /></a>
+            <a className="button" href="/resume/Alexander_Morton_Google_Data_Analytics_Resume_Revised.docx" download="Alexander_Morton_Google_Data_Analytics_Resume_Revised.docx"><Download size={16} aria-hidden="true" /> Download data résumé</a>
             <a className="button" href="https://github.com/Mortonas" target="_blank" rel="noreferrer"><Github size={16} aria-hidden="true" /> GitHub</a>
           </div>
         </section>

@@ -24,6 +24,9 @@ for (const [relative, title, canonical, page] of routes) {
 }
 
 await fs.access(path.join('dist', '404.html'));
+const dataResumePath = path.join('dist', 'resume', 'Alexander_Morton_Google_Data_Analytics_Resume_Revised.docx');
+const dataResume = await fs.stat(dataResumePath);
+if (dataResume.size < 10_000) throw new Error('data-analytics résumé is missing or unexpectedly small');
 
 async function walk(directory) {
   const entries = await fs.readdir(directory, { withFileTypes: true });

@@ -31,6 +31,15 @@ test('project registry provides stable clean routes', () => {
   ]);
 });
 
+test('data-analytics résumé is offered from the homepage and included as a public file', async () => {
+  const page = await fs.readFile('src/pages/HomePage.jsx', 'utf8');
+  assert.match(page, /href="\/resume\/Alexander_Morton_Google_Data_Analytics_Resume_Revised\.docx"/);
+  assert.match(page, /download="Alexander_Morton_Google_Data_Analytics_Resume_Revised\.docx"/);
+  assert.match(page, /Download data résumé/);
+  const resume = await fs.stat('public/resume/Alexander_Morton_Google_Data_Analytics_Resume_Revised.docx');
+  assert.ok(resume.size > 10_000);
+});
+
 test('project registry describes each project by its actual type', async () => {
   const encounter = projects.find(({ slug }) => slug === 'encounter-factory');
   assert.equal(encounter.label, 'Engineering case study');
