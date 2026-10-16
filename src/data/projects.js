@@ -1,4 +1,4 @@
-export const projects = [
+const projectRecords = [
   {
     slug: 'online-retail',
     title: 'Online Retail Performance Analysis',
@@ -39,7 +39,7 @@ export const projects = [
     metrics: ['2 property schedules', '974 formula cells', '17 validation objects'],
     repositoryUrl: null,
     sourceDownloadUrl: null,
-    demoUrl: 'https://docs.google.com/spreadsheets/d/1ccwO0CRXp3GgIX9eK9knxABlp-jBSh0P1N40G5VaaWo/edit?usp=sharing',
+    demoUrl: 'https://docs.google.com/spreadsheets/d/1ccwO0CRXp3GgIX9eK9knxABlp-jBSh0P1N40G5VaaWo/edit?gid=196923968#gid=196923968',
     demoLinkLabel: 'Try the workbook in Google Sheets',
     image: '/images/character-estate/estate-overview.webp',
     imageFit: 'contain',
@@ -64,3 +64,5 @@ export const projects = [
     limitations: 'Generated notes require game-master review; the public code showcase excludes private vaults and raw imports.',
   },
 ];
+
+export const projects = ['online-retail', 'character-estate-automation', 'traveller-notes', 'encounter-factory'].map((slug) => projectRecords.find((project) => project.slug === slug));

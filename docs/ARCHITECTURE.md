@@ -23,7 +23,7 @@
 - Responsibilities: present project claims without publishing restricted services or private workbook sources.
 - Inputs: public project repositories plus locally reviewed workbook and Apps Script evidence.
 - Outputs: approved screenshots, evidence-backed prose, repository links, and one sanitized fictional Encounter Factory HTML export.
-- Invariants: the Encounter Factory service is never hosted here; its approved export is static, sandboxed in the page, stripped of external requests, and checked for scripts, forms, contact details, and credential-like text. Character workbook, ZIP, scripts, audit data, comments, embedded art, and calculation files never enter Git or `dist`; only two approved metadata-free workbook WebP derivatives may be published.
+- Invariants: the Encounter Factory service is never hosted here; its approved export is static, sandboxed in the page, stripped of external requests, and checked for scripts, forms, contact details, and credential-like text. Character workbook, ZIP, scripts, audit data, comments, embedded art, and calculation files never enter Git or `dist`; only the five workbook WebP derivatives enumerated by verify-build.mjs may be published; this does not authorize additional images.
 
 ## Encounter Factory workflow case-study mapping
 - Last updated: 2026-09-20
@@ -55,3 +55,9 @@
 - Evidence boundary: a local-only verifier outside both public repositories reads the pinned Regina archive in place, checks source hashes, link/parent/type mapping, source spans, and reviewed presentation hashes. Its private mapping and provenance record never enter the portfolio build. Standard tests and Netlify builds require no private archive; they do not grant evidence-review or publication approval. A missing archive, failed local check, or pending Alexander review blocks publication.
 - Private inputs: the `C:\Projects\Traveller Notes` checkout, every configured Obsidian vault (`ISS_VAULT_PATH`), `vault/`, `custom_vault/`, `notes/`, `test_output/`, raw sector/world exports, full wiki pulls, backups, `.env`, `zettel_state.json` or other progress/state JSON, and related `.md`, `.json`, `.csv`, `.tsv`, or `.txt` material. These are never Vite inputs or public assets.
 - Invariants: Git and `dist` privacy checks fail on private paths, raw note/data exports, private-content markers, or unapproved Traveller visuals. All six WebP images have no EXIF, XMP, or ICC chunks and require visual review for vault paths, usernames, plugins, status bars, and unrelated content. Progress is kept in the private workflow. The portfolio does not run the importer or approve game-master drafts.
+
+## Navigation and employer actions
+- Last updated: 2026-10-16
+- FragmentNavigation owns initial and repeated fragment resolution after React mounts, pending asynchronous targets, focus transfer, history events, and the measured sticky-header offset. Physical HTML routes and native links remain authoritative.
+- siteProfile.js owns each variant's role, published project order, section navigation, related portfolio and explicit PDF/Word resume paths. Shared employer actions read this profile; they never infer identity from the hostname.
+- /projects/encounter-factory/example/ is a physical HTML entry with its own metadata. Its React wrapper provides historical-status context and a return path. The original archive URL and bytes stay unchanged and are embedded with an empty sandbox.

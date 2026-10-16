@@ -1,10 +1,11 @@
+import { imageDimensions } from '../data/imageDimensions.js';
 import { ArrowRight, Download, ExternalLink } from 'lucide-react';
 
 export default function ProjectCard({ project, featured = false }) {
   return (
     <article className={`project-card${featured ? ' featured' : ''}`}>
       <a className="project-image" href={project.href} aria-label={`Open ${project.title} project`}>
-        <img src={project.image} alt="" loading={featured ? 'eager' : 'lazy'} style={project.imageFit ? { objectFit: project.imageFit } : undefined} />
+        <img src={project.image} width={imageDimensions[project.image]?.[0]} height={imageDimensions[project.image]?.[1]} alt="" loading={featured ? 'eager' : 'lazy'} style={project.imageFit ? { objectFit: project.imageFit } : undefined} />
       </a>
       <div className="project-card-copy">
         <p className="eyebrow">{project.label}</p>

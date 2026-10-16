@@ -1,4 +1,6 @@
-import { ArrowRight, Download, Github } from 'lucide-react';
+import { ArrowRight, FileText, Github } from 'lucide-react';
+import EmployerActions from '../components/EmployerActions.jsx';
+import { siteProfile } from '../data/siteProfile.js';
 import ProjectCard from '../components/ProjectCard.jsx';
 import SiteLayout from '../components/SiteLayout.jsx';
 import { projects } from '../data/projects.js';
@@ -14,7 +16,7 @@ export default function HomePage() {
           <p className="lede">I use Python, SQL, and spreadsheets to organize data, check the numbers, and explain what they mean. I also build tools that turn those results into something people can work with.</p>
           <div className="actions">
             <a className="button primary" href="#work">View selected work <ArrowRight size={16} aria-hidden="true" /></a>
-            <a className="button" href="/resume/Alexander_Morton_Google_Data_Analytics_Resume_Revised.docx" download="Alexander_Morton_Google_Data_Analytics_Resume_Revised.docx"><Download size={16} aria-hidden="true" /> Download data résumé</a>
+            <a className="button" href={siteProfile.resumePdf} target="_blank" rel="noreferrer"><FileText size={16} aria-hidden="true" /> View data résumé (PDF)</a>
             <a className="button" href="https://github.com/Mortonas" target="_blank" rel="noreferrer"><Github size={16} aria-hidden="true" /> GitHub</a>
           </div>
         </section>
@@ -41,6 +43,10 @@ export default function HomePage() {
             <article><h3>Automation</h3><p>Google Sheets, Apps Script, validation rules, linked calculations, repeatable exports.</p></article>
             <article><h3>Application development</h3><p>React, TypeScript, Express, schemas, background jobs, accessible interfaces.</p></article>
           </div>
+        </section>
+        <section id="contact" className="section contact-section" aria-labelledby="contact-title">
+          <div><p className="eyebrow">Contact</p><h2 id="contact-title">Let’s talk about the work</h2><p>Explore the analysis, view my résumé, or get in touch about a data role.</p></div>
+          <EmployerActions />
         </section>
       </main>
     </SiteLayout>

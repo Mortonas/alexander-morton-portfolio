@@ -7,6 +7,7 @@ const origin = (process.env.VITE_SITE_ORIGIN || process.env.URL || '').replace(/
 if (!origin) throw new Error('VITE_SITE_ORIGIN is required locally; Netlify supplies URL automatically.');
 
 const routes = [
+  ['projects/encounter-factory/example/index.html', 'Historical Encounter Factory Example | Alexander Morton', `${origin}/projects/encounter-factory/example/`, 'encounter-example'],
   ['index.html', 'Alexander Morton | Entry-Level Data Analyst', `${origin}/`, 'home'],
   ['projects/online-retail/index.html', 'Online Retail Performance Analysis | Alexander Morton', `${origin}/projects/online-retail/`, 'online-retail'],
   ['projects/encounter-factory/index.html', 'Encounter Factory | Alexander Morton', `${origin}/projects/encounter-factory/`, 'encounter-factory'],
@@ -24,6 +25,8 @@ for (const [relative, title, canonical, page] of routes) {
 }
 
 await fs.access(path.join('dist', '404.html'));
+const resumePdf = await fs.readFile('dist/resume/Alexander_Morton_Google_Data_Analytics_Resume_Revised.pdf');
+if (resumePdf.subarray(0, 5).toString() !== '%PDF-') throw new Error('Résumé PDF is invalid');
 const dataResumePath = path.join('dist', 'resume', 'Alexander_Morton_Google_Data_Analytics_Resume_Revised.docx');
 const dataResume = await fs.stat(dataResumePath);
 if (dataResume.size < 10_000) throw new Error('data-analytics résumé is missing or unexpectedly small');

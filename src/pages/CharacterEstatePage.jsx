@@ -19,7 +19,7 @@ export default function CharacterEstatePage() {
           title="Character & Estate Automation"
           subtitle="Two property schedules. One estate view. A recurring yearly update."
           lede="I built the estate system to keep two properties, their income and upkeep, and the combined yearly picture connected. The workbook uses formulas to carry property values into an estate overview, with Apps Script handling selected annual updates."
-          downloads={[{ url: 'https://docs.google.com/spreadsheets/d/1ccwO0CRXp3GgIX9eK9knxABlp-jBSh0P1N40G5VaaWo/edit?usp=sharing', label: 'Try the workbook in Google Sheets', external: true }]}
+          downloads={[{ url: 'https://docs.google.com/spreadsheets/d/1ccwO0CRXp3GgIX9eK9knxABlp-jBSh0P1N40G5VaaWo/edit?gid=196923968#gid=196923968', label: 'Try the workbook in Google Sheets', external: true }]}
           downloadNoteLabel="About the spreadsheet"
           downloadNote="Selected cells have comments with extra detail. Other cells are mostly game-specific references or calculations; you can skip those and still follow the estate workflow. Make your own copy before testing changes so the shared original stays unchanged."
           meta={[
@@ -30,6 +30,16 @@ export default function CharacterEstatePage() {
 
         <CharacterEstateEvidence />
 
+        <section className="section demo-guide" aria-labelledby="demo-guide-title">
+          <p className="eyebrow">Explore the shared workbook</p>
+          <h2 id="demo-guide-title">Follow the estate workflow</h2>
+          <ol>
+            <li>Start with Estate Overview to inspect the combined income and expense categories.</li>
+            <li>Compare Estate [Landholding1] and Estate [Landholding2] with the consolidated view.</li>
+            <li>Make your own copy before entering values. Script availability in the shared demonstration has not been verified.</li>
+          </ol>
+        </section>
+
         <section className="section estate-visual-evidence" aria-labelledby="estate-evidence-title">
           <div className="section-heading">
             <p className="eyebrow">Workbook evidence</p>
@@ -39,26 +49,26 @@ export default function CharacterEstatePage() {
           <div className="estate-property-figures">
             <figure className="estate-figure estate-full-figure">
               <a href="/images/character-estate/estate-overview-full.webp" target="_blank" rel="noreferrer" aria-label="Open the full Estate Overview worksheet image">
-                <img src="/images/character-estate/estate-overview-full.webp" alt="Full Estate Overview worksheet showing land details, estate glory, treasury, income overview, estate staff, lot damage, shortage results, standard of living, and annual-update controls. The example entries are blank or zero-valued." loading="lazy" />
+                <img src="/images/character-estate/estate-overview-full.webp" width="3026" height="1360" alt="Full Estate Overview worksheet showing land details, estate glory, treasury, income overview, estate staff, lot damage, shortage results, standard of living, and annual-update controls. The example entries are blank or zero-valued." loading="lazy" />
               </a>
               <figcaption><strong>Full Estate Overview worksheet.</strong> This wide view shows how the estate&apos;s financial summary sits alongside resource, property, and yearly-update sections. <a href="/images/character-estate/estate-overview-full.webp" target="_blank" rel="noreferrer">Open full-size worksheet image</a>.</figcaption>
             </figure>
             <figure className="estate-figure">
               <a href="/images/character-estate/landholding-improvements.webp" target="_blank" rel="noreferrer" aria-label="Open the property improvements worksheet image">
-                <img src="/images/character-estate/landholding-improvements.webp" alt="Property worksheet rows for improvement year, building or benefit, glory, income, and maintenance, with blank or zero example entries." loading="lazy" />
+                <img src="/images/character-estate/landholding-improvements.webp" width="750" height="471" alt="Property worksheet rows for improvement year, building or benefit, glory, income, and maintenance, with blank or zero example entries." loading="lazy" />
               </a>
               <figcaption><strong>Improvement records.</strong> Each row can hold a year, an improvement, its score contribution, income, and maintenance.</figcaption>
             </figure>
             <figure className="estate-figure">
               <a href="/images/character-estate/landholding-finances.webp" target="_blank" rel="noreferrer" aria-label="Open the property income and expense worksheet image">
-                <img src="/images/character-estate/landholding-finances.webp" alt="Property income schedule separating directly held and vassal customary revenue, free income, assumed expenses, additional expenses, and annual totals." loading="lazy" />
+                <img src="/images/character-estate/landholding-finances.webp" width="550" height="471" alt="Property income schedule separating directly held and vassal customary revenue, free income, assumed expenses, additional expenses, and annual totals." loading="lazy" />
               </a>
               <figcaption><strong>Property income and expenses.</strong> The schedule keeps directly held and vassal amounts separate through its annual result.</figcaption>
             </figure>
           </div>
           <figure className="estate-figure estate-overview-figure">
             <a href="/images/character-estate/estate-overview.webp" target="_blank" rel="noreferrer" aria-label="Open the estate overview finance worksheet image">
-              <img src="/images/character-estate/estate-overview.webp" alt="Estate overview finance area consolidating customary revenue, additional land income, free income, expenses, and annual totals into separate directly held and vassal columns." loading="lazy" />
+              <img src="/images/character-estate/estate-overview.webp" width="550" height="455" alt="Estate overview finance area consolidating customary revenue, additional land income, free income, expenses, and annual totals into separate directly held and vassal columns." loading="lazy" />
             </a>
             <figcaption><strong>Combined estate view.</strong> The same categories are brought together across both property schedules. This is a comparison view, not an automated reconciliation check.</figcaption>
           </figure>
@@ -113,14 +123,14 @@ export default function CharacterEstatePage() {
             <h2 id="estate-takeaway-title">A recurring process with visible calculation paths</h2>
             <p>This project demonstrates structured multi-record data modeling, calculation lineage, controlled data entry, consolidation, reconciliation, and automation of a recurring update process.</p>
             <p>Here, reconciliation means comparing property-level values with the consolidated result. The workbook does not run an automated reconciliation control.</p>
-            <p className="private-boundary">The workbook and script sources remain private. The workbook export does not include Apps Script, and this page is not a runnable spreadsheet demo.</p>
+            <p className="private-boundary">This page documents the reviewed workbook and scripts. The separate Google Sheets link opens the shared demonstration; make a personal copy before editing. The original reviewed files remain private, and this page does not execute Apps Script.</p>
           </div>
           <details className="character-context">
             <summary>How the estate connects to the character sheet</summary>
             <p>The estate is part of a larger workbook. Selected balances and calculated values also appear in the Back and Tracking sheets; this Front image is supporting context, not the focus of this case study.</p>
             <figure className="estate-figure">
               <a href="/images/character-estate/front-sheet.webp" target="_blank" rel="noreferrer" aria-label="Open the Front character worksheet image">
-                <img src="/images/character-estate/front-sheet.webp" alt="Front character sheet with personal records, calculated attributes, skills, resources, equipment, and stable information." loading="lazy" />
+                <img src="/images/character-estate/front-sheet.webp" width="1689" height="2713" alt="Front character sheet with personal records, calculated attributes, skills, resources, equipment, and stable information." loading="lazy" />
               </a>
               <figcaption>Flattened, reviewed image from the larger character workbook.</figcaption>
             </figure>

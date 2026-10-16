@@ -21,6 +21,7 @@ async function waitForServer() {
 }
 
 const routes = [
+  ['/projects/encounter-factory/example/', 'Historical Encounter Factory Example | Alexander Morton', `${origin}/projects/encounter-factory/example/`],
   ['/', 'Alexander Morton | Entry-Level Data Analyst', `${origin}/`],
   ['/projects/online-retail/', 'Online Retail Performance Analysis | Alexander Morton', `${origin}/projects/online-retail/`],
   ['/projects/encounter-factory/', 'Encounter Factory | Alexander Morton', `${origin}/projects/encounter-factory/`],
@@ -41,6 +42,8 @@ try {
     throw new Error('Traveller Notes physical index did not serve its project document');
   }
   const assets = [
+    '/resume/Alexander_Morton_Google_Data_Analytics_Resume_Revised.pdf',
+    '/resume/Alexander_Morton_Google_Data_Analytics_Resume_Revised.docx',
     '/data/dashboard-v1.json', '/data/dashboard-v1.sha256', '/data/dashboard-v1.schema.json',
     '/artifacts/online-retail-case-study.xlsx',
     '/images/character-estate/estate-overview-full.webp',

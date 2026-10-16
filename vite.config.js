@@ -29,6 +29,7 @@ export default defineConfig(({ command, mode }) => {
       manifest: true,
       rollupOptions: {
         input: {
+          encounterExample: resolve(import.meta.dirname, 'projects/encounter-factory/example/index.html'),
           home: resolve(import.meta.dirname, 'index.html'),
           onlineRetail: resolve(import.meta.dirname, 'projects/online-retail/index.html'),
           encounterFactory: resolve(import.meta.dirname, 'projects/encounter-factory/index.html'),

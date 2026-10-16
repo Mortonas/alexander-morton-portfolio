@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import ProjectHero from '../components/ProjectHero.jsx';
+import { imageDimensions } from '../data/imageDimensions.js';
 import SiteLayout from '../components/SiteLayout.jsx';
 import { reginaShowcase } from '../data/reginaShowcase.js';
 import '../styles/traveller-notes.css';
@@ -65,6 +66,7 @@ export default function TravellerNotesPage() {
                         aria-controls="regina-note-detail"
                         onClick={() => setSelectedNoteId(note.id)}
                       >{note.title}</button>
+                      {selectedNote.id === note.id && <a className="selected-note-jump" href="#regina-note-detail">View selected note: {note.title}</a>}
                       <p>{note.masterExcerpt}</p>
                     </li>
                   ))}
@@ -73,7 +75,7 @@ export default function TravellerNotesPage() {
               <details className="regina-master-image">
                 <summary>View the master-note screenshot</summary>
                 <figure className="regina-archival-image">
-                  <img src={reginaShowcase.image.src} alt={reginaShowcase.image.alt} loading="lazy" />
+                  <img src={reginaShowcase.image.src} width={imageDimensions[reginaShowcase.image.src]?.[0]} height={imageDimensions[reginaShowcase.image.src]?.[1]} alt={reginaShowcase.image.alt} loading="lazy" />
                   <figcaption>Complete image of the reviewed master-note excerpt, not the private raw file. <a href={reginaShowcase.image.src} target="_blank" rel="noreferrer">{reginaShowcase.image.linkLabel}</a></figcaption>
                 </figure>
               </details>
@@ -88,7 +90,7 @@ export default function TravellerNotesPage() {
               <p className="regina-annotation"><strong>What this adds:</strong> {selectedNote.annotation}</p>
               {selectedNote.image && (
                 <figure className="regina-archival-image">
-                  <img src={selectedNote.image.src} alt={selectedNote.image.alt} />
+                  <img src={selectedNote.image.src} width={imageDimensions[selectedNote.image.src]?.[0]} height={imageDimensions[selectedNote.image.src]?.[1]} alt={selectedNote.image.alt} />
                   <figcaption>Complete image of the reviewed note excerpt, not an untouched export. The text above remains available without this image. <a href={selectedNote.image.src} target="_blank" rel="noreferrer">{selectedNote.image.linkLabel}</a></figcaption>
                 </figure>
               )}
@@ -159,7 +161,7 @@ export default function TravellerNotesPage() {
           </div>
           <figure className="traveller-capture traveller-menu-capture">
             <a href="/images/traveller-notes/idle-menu.webp" target="_blank" rel="noreferrer" aria-label="Open the full-size Traveller Notes idle menu image">
-              <img src="/images/traveller-notes/idle-menu.webp" alt="Idle Traveller Notes terminal menu offering system lookup, jump exploration, sector or subsector archive creation, and exit" loading="lazy" />
+              <img src="/images/traveller-notes/idle-menu.webp" width="1200" height="384" alt="Idle Traveller Notes terminal menu offering system lookup, jump exploration, sector or subsector archive creation, and exit" loading="lazy" />
             </a>
             <figcaption>Traveller Notes menu in an empty demo vault (no generation run in this screenshot). This is the program’s idle menu. <a href="/images/traveller-notes/idle-menu.webp" target="_blank" rel="noreferrer">Open full-size menu image</a></figcaption>
           </figure>

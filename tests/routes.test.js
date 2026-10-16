@@ -4,6 +4,7 @@ import test from 'node:test';
 import { projects } from '../src/data/projects.js';
 
 const entries = [
+  ['projects/encounter-factory/example/index.html', 'encounter-example', '/projects/encounter-factory/example/'],
   ['index.html', 'home', '/'],
   ['projects/online-retail/index.html', 'online-retail', '/projects/online-retail/'],
   ['projects/encounter-factory/index.html', 'encounter-factory', '/projects/encounter-factory/'],
@@ -25,17 +26,21 @@ for (const [file, page, canonical] of entries) {
 test('project registry provides stable clean routes', () => {
   assert.deepEqual(projects.map(({ href }) => href), [
     '/projects/online-retail/',
-    '/projects/encounter-factory/',
     '/projects/character-estate-automation/',
     '/projects/traveller-notes/',
+    '/projects/encounter-factory/',
   ]);
 });
 
 test('data-analytics résumé is offered from the homepage and included as a public file', async () => {
-  const page = await fs.readFile('src/pages/HomePage.jsx', 'utf8');
-  assert.match(page, /href="\/resume\/Alexander_Morton_Google_Data_Analytics_Resume_Revised\.docx"/);
-  assert.match(page, /download="Alexander_Morton_Google_Data_Analytics_Resume_Revised\.docx"/);
-  assert.match(page, /Download data résumé/);
+  const { siteProfile } = await import('../src/data/siteProfile.js');
+  const actions = await fs.readFile('src/components/EmployerActions.jsx', 'utf8');
+  assert.equal(siteProfile.resumeWord, '/resume/Alexander_Morton_Google_Data_Analytics_Resume_Revised.docx');
+  assert.equal(siteProfile.resumePdf, '/resume/Alexander_Morton_Google_Data_Analytics_Resume_Revised.pdf');
+  assert.match(actions, /href=\{siteProfile.resumePdf\}/);
+  assert.match(actions, /href=\{siteProfile.resumeWord\} download/);
+  const pdf = await fs.readFile('public' + siteProfile.resumePdf);
+  assert.equal(pdf.subarray(0, 5).toString(), '%PDF-');
   const resume = await fs.stat('public/resume/Alexander_Morton_Google_Data_Analytics_Resume_Revised.docx');
   assert.ok(resume.size > 10_000);
 });
@@ -53,7 +58,7 @@ test('project registry describes each project by its actual type', async () => {
   assert.equal(characterEstate.linkLabel, 'View Character & Estate case study');
   assert.match(characterEstate.summary, /two property schedules feed one combined estate view/i);
   assert.equal(characterEstate.sourceDownloadUrl, null);
-  assert.equal(characterEstate.demoUrl, 'https://docs.google.com/spreadsheets/d/1ccwO0CRXp3GgIX9eK9knxABlp-jBSh0P1N40G5VaaWo/edit?usp=sharing');
+  assert.equal(characterEstate.demoUrl, 'https://docs.google.com/spreadsheets/d/1ccwO0CRXp3GgIX9eK9knxABlp-jBSh0P1N40G5VaaWo/edit?gid=196923968#gid=196923968');
   assert.equal(characterEstate.demoLinkLabel, 'Try the workbook in Google Sheets');
   for (const project of projects.filter(({ repositoryUrl }) => repositoryUrl)) {
     assert.match(project.sourceDownloadUrl, new RegExp(`${project.repositoryUrl}/archive/refs/heads/main\\.zip`));

@@ -2,8 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/site.css';
 import './styles/project-downloads.css';
+import './styles/ui-polish.css';
 
 const pageLoaders = {
+  'encounter-example': () => import('./pages/EncounterExamplePage.jsx'),
   home: () => import('./pages/HomePage.jsx'),
   'online-retail': () => import('./pages/OnlineRetailPage.jsx'),
   'encounter-factory': () => import('./pages/EncounterFactoryPage.jsx'),

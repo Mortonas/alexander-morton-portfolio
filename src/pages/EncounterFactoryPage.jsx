@@ -1,3 +1,4 @@
+import EvidenceImage from '../components/EvidenceImage.jsx';
 import { ExternalLink } from 'lucide-react';
 import EncounterWorkflow from '../components/EncounterWorkflow.jsx';
 import ProjectHero from '../components/ProjectHero.jsx';
@@ -61,19 +62,16 @@ export default function EncounterFactoryPage() {
           </nav>
         </section>
 
-        <EncounterWorkflow />
-
         <section className="section media-section lead-media" aria-labelledby="briefing-title">
           <div className="section-heading">
             <p className="eyebrow">Input evidence</p>
             <h2 id="briefing-title">The game master fills in one detailed briefing</h2>
             <p>The form captures the player characters, requested enemies and allies, the location, the win condition, the desired tone, and the story details that should shape the encounter. This example uses fictional mock data.</p>
           </div>
-          <figure className="screenshot-frame">
-            <img src="/images/encounter-factory/briefing-intake.png" alt="Encounter Factory briefing form filled with fictional information for a Dungeons and Dragons party, enemy, ally, setting, and narrative goals" />
-            <figcaption>A filled fictional briefing shows the information used to calculate and write the encounter.</figcaption>
-          </figure>
+          <EvidenceImage src="/images/encounter-factory/briefing-intake.png" alt="Encounter Factory briefing form filled with fictional information for a Dungeons and Dragons party, enemy, ally, setting, and narrative goals" loading="eager" caption={<>A filled fictional briefing shows the information used to calculate and write the encounter.</>} />
         </section>
+
+        <EncounterWorkflow />
 
         <section className="section media-section alt" aria-labelledby="operator-title">
           <div className="section-heading">
@@ -81,10 +79,7 @@ export default function EncounterFactoryPage() {
             <h2 id="operator-title">The operator reviews requests before generation</h2>
             <p>Submitting a briefing does not start AI generation straight away. It puts the request in a queue so a local operator can inspect and claim it first.</p>
           </div>
-          <figure className="screenshot-frame">
-            <img src="/images/encounter-factory/encounter-builder.png" alt="Encounter Factory local operator console showing the incoming briefing queue" loading="lazy" />
-            <figcaption>The local operator view keeps submitted briefings, generation jobs, and recovery state visible.</figcaption>
-          </figure>
+          <EvidenceImage src="/images/encounter-factory/encounter-builder.png" alt="Encounter Factory local operator console showing the incoming briefing queue" loading="lazy" caption={<>The local operator view keeps submitted briefings, generation jobs, and recovery state visible.</>} />
         </section>
 
         <section className="section media-section" aria-labelledby="advisor-title">
@@ -93,10 +88,7 @@ export default function EncounterFactoryPage() {
             <h2 id="advisor-title">GM Advisor offers a faster tactical review</h2>
             <p>GM Advisor uses the same party information to prepare shorter tactical notes when a full encounter document would be more than the game master needs.</p>
           </div>
-          <figure className="screenshot-frame">
-            <img src="/images/encounter-factory/gm-advisor.png" alt="GM Advisor interface showing a tactical review generated from fictional party information" loading="lazy" />
-            <figcaption>GM Advisor is a shorter review path built on the same calculation and validation boundaries.</figcaption>
-          </figure>
+          <EvidenceImage src="/images/encounter-factory/gm-advisor.png" alt="GM Advisor interface showing a tactical review generated from fictional party information" loading="lazy" caption={<>GM Advisor is a shorter review path built on the same calculation and validation boundaries.</>} />
         </section>
 
         <section className="section limitation" aria-labelledby="encounter-limit-title">
@@ -108,7 +100,7 @@ export default function EncounterFactoryPage() {
           <div className="section-heading">
             <p className="eyebrow">Existing HTML export · work in progress</p>
             <h2 id="example-output-title">An encounter document from an earlier test</h2>
-            <p>This saved export shows what the current system can produce: scene-setting, tactical zones, calculated targets, enemy statistics, a round-by-round run sheet, and design notes. It is an actual generated output, not the hand-written test fixture in the repository.</p>
+            <p>This historical sanitized capture shows the intended document shape: scene-setting, tactical zones, calculated targets, enemy statistics, a round-by-round run sheet, and design notes. It is not represented as output from the current public commit.</p>
           </div>
 
           <aside className="output-warning" aria-label="Work-in-progress output notice">
@@ -119,7 +111,7 @@ export default function EncounterFactoryPage() {
           <div className="output-preview-shell">
             <div className="output-preview-toolbar">
               <div><span>Encounter Factory export</span><strong>The Sanctum of Shadows</strong></div>
-              <a className="text-link" href="/examples/encounter-factory/the-sanctum-of-shadows.html" target="_blank" rel="noreferrer">Open full document <ExternalLink size={15} aria-hidden="true" /></a>
+              <a className="text-link" href="/projects/encounter-factory/example/" target="_blank" rel="noreferrer">Open full document <ExternalLink size={15} aria-hidden="true" /></a>
             </div>
             <iframe
               className="encounter-output-frame"
@@ -130,6 +122,7 @@ export default function EncounterFactoryPage() {
             />
           </div>
 
+          <p className="evidence-note">Audit labels inside the historical document are part of that original artifact, not a current quality guarantee.</p>
           <p className="output-provenance">Privacy review: the portfolio copy contains fictional encounter material only. The external font request was removed, the preview is sandboxed, and no scripts, forms, client contact details, or provider credentials are included.</p>
         </section>
       </main>
